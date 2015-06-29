@@ -13,6 +13,10 @@ Latest compiled and minified JavaScript
 -->
 
 <script src="bootstrap-3.3.4-dist/js/jquery-1.11.2.min.js" type="text/javascript"></script>  
+
+<script src="jquery-ui-1.11.4/external/jquery/jquery.js" type="text/javascript"></script>
+<script src="jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
+
 <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script src="bootstrap-3.3.4-dist/js/affix.js" type="text/javascript"></script>
@@ -30,8 +34,6 @@ Latest compiled and minified JavaScript
 <script src="bootstrap-3.3.4-dist/js/holder.js" type="text/javascript"></script>
 <script src="bootstrap-3.3.4-dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
 
-<script src="jquery-ui-1.11.4/external/jquery/jquery.js" type="text/javascript"></script>
-<script src="jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
 
 
 
