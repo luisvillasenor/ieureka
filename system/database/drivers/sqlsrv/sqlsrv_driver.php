@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 2.0.3
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -69,7 +79,32 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 *
 	 * @var	mixed
 	 */
+<<<<<<< HEAD
 	public $scrollable;
+=======
+	function db_connect($pooling = false)
+	{
+		// Check for a UTF-8 charset being passed as CI's default 'utf8'.
+		$character_set = (0 === strcasecmp('utf8', $this->char_set)) ? 'UTF-8' : $this->char_set;
+
+		$connection = array(
+			'UID'				=> empty($this->username) ? '' : $this->username,
+			'PWD'				=> empty($this->password) ? '' : $this->password,
+			'Database'			=> $this->database,
+			'ConnectionPooling' => $pooling ? 1 : 0,
+			'CharacterSet'		=> $character_set,
+			'ReturnDatesAsStrings' => 1
+		);
+
+		// If the username and password are both empty, assume this is a
+		// 'Windows Authentication Mode' connection.
+		if(empty($connection['UID']) && empty($connection['PWD'])) {
+			unset($connection['UID'], $connection['PWD']);
+		}
+
+		return sqlsrv_connect($this->hostname, $connection);
+	}
+>>>>>>> desarrollo
 
 	// --------------------------------------------------------------------
 
@@ -288,6 +323,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	public function version()
 	{
+<<<<<<< HEAD
 		if (isset($this->data_cache['version']))
 		{
 			return $this->data_cache['version'];
@@ -299,6 +335,23 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 		}
 
 		return $this->data_cache['version'] = $info['SQLServerVersion'];
+=======
+		if ($table == '')
+		{
+			return 0;
+		}
+
+		$query = $this->query($this->_count_string . $this->_protect_identifiers('numrows') . " FROM " . $this->_protect_identifiers($table, TRUE, NULL, FALSE));
+
+		if ($query->num_rows() == 0)
+		{
+			return 0;
+		}
+
+		$row = $query->row();
+		$this->_reset_select();
+		return (int) $row->numrows;
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------
@@ -353,9 +406,14 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	public function field_data($table)
 	{
+<<<<<<< HEAD
 		$sql = 'SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, COLUMN_DEFAULT
 			FROM INFORMATION_SCHEMA.Columns
 			WHERE UPPER(TABLE_NAME) = '.$this->escape(strtoupper($table));
+=======
+		return "SELECT TOP 1 * FROM " . $this->_escape_table($table);
+	}
+>>>>>>> desarrollo
 
 		if (($query = $this->query($sql)) === FALSE)
 		{
@@ -388,8 +446,13 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	public function error()
 	{
+<<<<<<< HEAD
 		$error = array('code' => '00000', 'message' => '');
 		$sqlsrv_errors = sqlsrv_errors(SQLSRV_ERR_ERRORS);
+=======
+		return $table;
+	}
+>>>>>>> desarrollo
 
 		if ( ! is_array($sqlsrv_errors))
 		{
@@ -425,11 +488,17 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 * @param	array	$values
 	 * @return	string
 	 */
+<<<<<<< HEAD
 	protected function _update($table, $values)
 	{
 		$this->qb_limit = FALSE;
 		$this->qb_orderby = array();
 		return parent::_update($table, $values);
+=======
+	function _insert($table, $keys, $values)
+	{
+		return "INSERT INTO ".$this->_escape_table($table)." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------
@@ -447,7 +516,16 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	protected function _truncate($table)
 	{
+<<<<<<< HEAD
 		return 'TRUNCATE TABLE '.$table;
+=======
+		foreach($values as $key => $val)
+		{
+			$valstr[] = $key." = ".$val;
+		}
+
+		return "UPDATE ".$this->_escape_table($table)." SET ".implode(', ', $valstr)." WHERE ".implode(" ", $where);
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------
@@ -462,12 +540,16 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	protected function _delete($table)
 	{
+<<<<<<< HEAD
 		if ($this->qb_limit)
 		{
 			return 'WITH ci_delete AS (SELECT TOP '.$this->qb_limit.' * FROM '.$table.$this->_compile_wh('qb_where').') DELETE FROM ci_delete';
 		}
 
 		return parent::_delete($table);
+=======
+		return "TRUNCATE TABLE ".$table;
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------
@@ -543,6 +625,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	protected function _insert_batch($table, $keys, $values)
 	{
+<<<<<<< HEAD
 		// Multiple-value inserts are only supported as of SQL Server 2008
 		if (version_compare($this->version(), '10', '>='))
 		{
@@ -550,6 +633,11 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 		}
 
 		return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
+=======
+		$i = $limit + $offset;
+
+		return preg_replace('/(^\SELECT (DISTINCT)?)/i','\\1 TOP '.$i.' ', $sql);
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------
@@ -565,3 +653,11 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	}
 
 }
+<<<<<<< HEAD
+=======
+
+
+
+/* End of file sqlsrv_driver.php */
+/* Location: ./system/database/drivers/sqlsrv/sqlsrv_driver.php */
+>>>>>>> desarrollo

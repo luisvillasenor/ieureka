@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.4.1
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright   	Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -48,6 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_DB_oci8_result extends CI_DB_result {
 
+<<<<<<< HEAD
 	/**
 	 * Statement ID
 	 *
@@ -61,6 +72,11 @@ class CI_DB_oci8_result extends CI_DB_result {
 	 * @var	resource
 	 */
 	public $curs_id;
+=======
+	public $stmt_id;
+	public $curs_id;
+	public $limit_used;
+>>>>>>> desarrollo
 
 	/**
 	 * Limit used flag
@@ -72,6 +88,7 @@ class CI_DB_oci8_result extends CI_DB_result {
 	/**
 	 * Commit mode flag
 	 *
+<<<<<<< HEAD
 	 * @var	int
 	 */
 	public $commit_mode;
@@ -83,9 +100,13 @@ class CI_DB_oci8_result extends CI_DB_result {
 	 *
 	 * @param	object	&$driver_object
 	 * @return	void
+=======
+	 * @return  integer
+>>>>>>> desarrollo
 	 */
 	public function __construct(&$driver_object)
 	{
+<<<<<<< HEAD
 		parent::__construct($driver_object);
 
 		$this->stmt_id = $driver_object->stmt_id;
@@ -93,6 +114,20 @@ class CI_DB_oci8_result extends CI_DB_result {
 		$this->limit_used = $driver_object->limit_used;
 		$this->commit_mode =& $driver_object->commit_mode;
 		$driver_object->stmt_id = FALSE;
+=======
+		if ($this->num_rows === 0 && count($this->result_array()) > 0)
+		{
+			$this->num_rows = count($this->result_array());
+			@oci_execute($this->stmt_id, OCI_DEFAULT);
+
+			if ($this->curs_id)
+			{
+				@oci_execute($this->curs_id, OCI_DEFAULT);
+			}
+		}
+
+		return $this->num_rows;
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------

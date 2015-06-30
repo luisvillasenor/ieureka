@@ -155,10 +155,10 @@ class CI_Cache_apc extends CI_Driver {
 	 * @param	string	user/filehits
 	 * @return	mixed	array on success, false on failure
 	 */
-	 public function cache_info($type = NULL)
-	 {
-		 return apc_cache_info($type);
-	 }
+	public function cache_info($type = NULL)
+	{
+		return apc_cache_info($type);
+	}
 
 	// ------------------------------------------------------------------------
 

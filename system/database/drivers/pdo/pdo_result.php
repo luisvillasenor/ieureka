@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 2.1.0
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 2.1.2
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -50,6 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_DB_pdo_result extends CI_DB_result {
 
+	public $num_rows;
+
 	/**
 	 * Number of rows in the result set
 	 *
@@ -61,6 +73,7 @@ class CI_DB_pdo_result extends CI_DB_result {
 		{
 			return $this->num_rows;
 		}
+<<<<<<< HEAD
 		elseif (count($this->result_array) > 0)
 		{
 			return $this->num_rows = count($this->result_array);
@@ -75,6 +88,16 @@ class CI_DB_pdo_result extends CI_DB_result {
 		}
 
 		return $this->num_rows = count($this->result_array());
+=======
+		elseif (($this->num_rows = $this->result_id->rowCount()) > 0)
+		{
+			return $this->num_rows;
+		}
+
+		$this->num_rows = count($this->result_id->fetchAll());
+		$this->result_id->execute();
+		return $this->num_rows;
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------

@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright		Copyright (c) 2006 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -51,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_Driver_Library {
 
+<<<<<<< HEAD
 	/**
 	 * Array of drivers that are available to use with the driver class
 	 *
@@ -63,6 +74,9 @@ class CI_Driver_Library {
 	 *
 	 * @var string
 	 */
+=======
+	protected $valid_drivers	= array();
+>>>>>>> desarrollo
 	protected $lib_name;
 
 	/**
@@ -111,6 +125,7 @@ class CI_Driver_Library {
 			show_error($msg);
 		}
 
+<<<<<<< HEAD
 		// Get package paths and filename case variations to search
 		$CI = get_instance();
 		$paths = $CI->load->get_package_paths(TRUE);
@@ -119,6 +134,16 @@ class CI_Driver_Library {
 		$class_name = $prefix.$child_name;
 		$found = class_exists($class_name, FALSE);
 		if ( ! $found)
+=======
+		// The class will be prefixed with the parent lib
+		$child_class = $this->lib_name.'_'.$child;
+
+		// Remove the CI_ prefix and lowercase
+		$lib_name = ucfirst(strtolower(str_replace('CI_', '', $this->lib_name)));
+		$driver_name = strtolower(str_replace('CI_', '', $child_class));
+
+		if (in_array($driver_name, array_map('strtolower', $this->valid_drivers)))
+>>>>>>> desarrollo
 		{
 			// Check for subclass file
 			foreach ($paths as $path)

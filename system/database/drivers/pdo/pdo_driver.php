@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 2.1.0
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 2.1.2
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -52,6 +62,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class CI_DB_pdo_driver extends CI_DB {
 
+<<<<<<< HEAD
+=======
+	var $dbdriver = 'pdo';
+
+	// the character used to excape - not necessary for PDO
+	var $_escape_char = '';
+	var $_like_escape_str;
+	var $_like_escape_chr;
+
+
+	/**
+	 * The syntax to count rows is slightly different across different
+	 * database engines, so this string appears in each driver and is
+	 * used for the count_all() and count_all_results() functions.
+	 */
+	var $_count_string = "SELECT COUNT(*) AS ";
+	var $_random_keyword;
+
+	var $options = array();
+
+	function __construct($params)
+	{
+		parent::__construct($params);
+
+		// clause and character used for LIKE escape sequences
+		if (strpos($this->hostname, 'mysql') !== FALSE)
+		{
+			$this->_like_escape_str = '';
+			$this->_like_escape_chr = '';
+
+			//Prior to this version, the charset can't be set in the dsn
+			if(is_php('5.3.6'))
+			{
+				$this->hostname .= ";charset={$this->char_set}";
+			}
+
+			//Set the charset with the connection options
+			$this->options['PDO::MYSQL_ATTR_INIT_COMMAND'] = "SET NAMES {$this->char_set}";
+		}
+		elseif (strpos($this->hostname, 'odbc') !== FALSE)
+		{
+			$this->_like_escape_str = " {escape '%s'} ";
+			$this->_like_escape_chr = '!';
+		}
+		else
+		{
+			$this->_like_escape_str = " ESCAPE '%s' ";
+			$this->_like_escape_chr = '!';
+		}
+
+		empty($this->database) OR $this->hostname .= ';dbname='.$this->database;
+
+		$this->trans_enabled = FALSE;
+
+		$this->_random_keyword = ' RND('.time().')'; // database specific random keyword
+	}
+
+>>>>>>> desarrollo
 	/**
 	 * Database driver
 	 *
@@ -152,6 +220,7 @@ class CI_DB_pdo_driver extends CI_DB {
 	 */
 	public function version()
 	{
+<<<<<<< HEAD
 		if (isset($this->data_cache['version']))
 		{
 			return $this->data_cache['version'];
@@ -161,11 +230,34 @@ class CI_DB_pdo_driver extends CI_DB {
 		try
 		{
 			return $this->data_cache['version'] = $this->conn_id->getAttribute(PDO::ATTR_SERVER_VERSION);
+=======
+		$sql = $this->_prep_query($sql);
+		$result_id = $this->conn_id->prepare($sql);
+
+		if (is_object($result_id) && $result_id->execute())
+		{
+			if (is_numeric(stripos($sql, 'SELECT')))
+			{
+				$this->affect_rows = count($result_id->fetchAll());
+			}
+			else
+			{
+				$this->affect_rows = $result_id->rowCount();
+			}
+>>>>>>> desarrollo
 		}
 		catch (PDOException $e)
 		{
+<<<<<<< HEAD
 			return parent::version();
 		}
+=======
+			$this->affect_rows = 0;
+			return FALSE;
+		}
+
+		return $result_id;
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------

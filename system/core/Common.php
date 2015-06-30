@@ -51,6 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // ------------------------------------------------------------------------
 
+/**
+* Determines if the current version of PHP is greater then the supplied value
+*
+* @access	public
+* @param	string
+* @return	bool	TRUE if the current version is $version or higher
+*/
 if ( ! function_exists('is_php'))
 {
 	/**

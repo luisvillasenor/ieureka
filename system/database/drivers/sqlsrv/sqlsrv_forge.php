@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 2.0.3
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -65,12 +75,20 @@ class CI_DB_sqlsrv_forge extends CI_DB_forge {
 	 *
 	 * @var	array
 	 */
+<<<<<<< HEAD
 	protected $_unsigned		= array(
 		'TINYINT'	=> 'SMALLINT',
 		'SMALLINT'	=> 'INT',
 		'INT'		=> 'BIGINT',
 		'REAL'		=> 'FLOAT'
 	);
+=======
+	function _drop_table($table)
+	{
+		return "IF (EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = '"
+			.$table."')) DROP TABLE [dbo].[".$table."]";
+	}
+>>>>>>> desarrollo
 
 	// --------------------------------------------------------------------
 
@@ -84,6 +102,7 @@ class CI_DB_sqlsrv_forge extends CI_DB_forge {
 	 */
 	protected function _alter_table($alter_type, $table, $field)
 	{
+<<<<<<< HEAD
 		if (in_array($alter_type, array('ADD', 'DROP'), TRUE))
 		{
 			return parent::_alter_table($alter_type, $table, $field);
@@ -94,6 +113,68 @@ class CI_DB_sqlsrv_forge extends CI_DB_forge {
 		for ($i = 0, $c = count($field); $i < $c; $i++)
 		{
 			$sqls[] = $sql.$this->_process_column($field[$i]);
+=======
+		$sql = '';
+		if ($if_not_exists === TRUE)
+		{
+			$sql = "IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = ";
+		}
+		$sql .= $this->db->_escape_identifiers($table).")) CREATE TABLE ".$this->db->_escape_identifiers($table)." (";
+		$current_field_count = 0;
+
+		foreach ($fields as $field=>$attributes)
+		{
+			// Numeric field names aren't allowed in databases, so if the key is
+			// numeric, we know it was assigned by PHP and the developer manually
+			// entered the field information, so we'll simply add it to the list
+			if (is_numeric($field))
+			{
+				$sql .= "\n\t$attributes";
+			}
+			else
+			{
+				$attributes = array_change_key_case($attributes, CASE_UPPER);
+
+				$sql .= "\n\t".$this->db->_protect_identifiers($field);
+
+				$sql .=  ' '.$attributes['TYPE'];
+
+				if (array_key_exists('CONSTRAINT', $attributes))
+				{
+					$sql .= '('.$attributes['CONSTRAINT'].')';
+				}
+
+				if (array_key_exists('UNSIGNED', $attributes) && $attributes['UNSIGNED'] === TRUE)
+				{
+					$sql .= ' UNSIGNED';
+				}
+
+				if (array_key_exists('DEFAULT', $attributes))
+				{
+					$sql .= ' DEFAULT \''.$attributes['DEFAULT'].'\'';
+				}
+
+				if (array_key_exists('NULL', $attributes) && $attributes['NULL'] === TRUE)
+				{
+					$sql .= ' NULL';
+				}
+				else
+				{
+					$sql .= ' NOT NULL';
+				}
+
+				if (array_key_exists('AUTO_INCREMENT', $attributes) && $attributes['AUTO_INCREMENT'] === TRUE)
+				{
+					$sql .= ' IDENTITY(1,1)';
+				}
+			}
+
+			// don't add a comma on the end of the last field
+			if (++$current_field_count < count($fields))
+			{
+				$sql .= ',';
+			}
+>>>>>>> desarrollo
 		}
 
 		return $sqls;
@@ -135,6 +216,7 @@ class CI_DB_sqlsrv_forge extends CI_DB_forge {
 	 */
 	protected function _attr_auto_increment(&$attributes, &$field)
 	{
+<<<<<<< HEAD
 		if ( ! empty($attributes['AUTO_INCREMENT']) && $attributes['AUTO_INCREMENT'] === TRUE && stripos($field['type'], 'int') !== FALSE)
 		{
 			$field['auto_increment'] = ' IDENTITY(1,1)';
@@ -142,3 +224,12 @@ class CI_DB_sqlsrv_forge extends CI_DB_forge {
 	}
 
 }
+=======
+		return 'EXEC sp_rename '.$this->db->_protect_identifiers($table_name).", ".$this->db->_protect_identifiers($new_table_name);
+	}
+
+}
+
+/* End of file sqlsrv_forge.php */
+/* Location: ./system/database/drivers/sqlsrv/sqlsrv_forge.php */
+>>>>>>> desarrollo

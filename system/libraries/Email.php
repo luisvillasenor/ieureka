@@ -4,6 +4,7 @@
  *
  * An open source application development framework for PHP
  *
+<<<<<<< HEAD
  * This content is released under the MIT License (MIT)
  *
  * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
@@ -33,6 +34,15 @@
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	http://codeigniter.com
  * @since	Version 1.0.0
+=======
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license		http://codeigniter.com/user_guide/license.html
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+>>>>>>> desarrollo
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -1334,7 +1344,7 @@ class CI_Email {
 
 				if ($this->_get_protocol() === 'mail')
 				{
-					$this->_header_str .= $hdr;
+					$this->_header_str .= rtrim($hdr);
 					$this->_finalbody = $this->_body;
 				}
 				else
@@ -1370,7 +1380,7 @@ class CI_Email {
 
 				if ($this->_get_protocol() === 'mail')
 				{
-					$this->_header_str .= $hdr;
+					$this->_header_str .= rtrim($hdr);
 				}
 				else
 				{
@@ -1390,7 +1400,7 @@ class CI_Email {
 
 				if ($this->_get_protocol() === 'mail')
 				{
-					$this->_header_str .= $hdr;
+					$this->_header_str .= rtrim($hdr);
 				}
 
 				$body .= $this->_get_mime_message().$this->newline
@@ -1408,7 +1418,7 @@ class CI_Email {
 
 				if ($this->_get_protocol() === 'mail')
 				{
-					$this->_header_str .= $hdr;
+					$this->_header_str .= rtrim($hdr);
 				}
 
 				$body .= $this->_get_mime_message().$this->newline.$this->newline
@@ -2211,6 +2221,7 @@ class CI_Email {
 			}
 		}
 
+<<<<<<< HEAD
 		// Determine which parts of our raw data needs to be printed
 		$raw_data = '';
 		is_array($include) OR $include = array($include);
@@ -2231,6 +2242,10 @@ class CI_Email {
 		}
 
 		return $msg.($raw_data === '' ? '' : '<pre>'.$raw_data.'</pre>');
+=======
+		$msg .= "<pre>".htmlspecialchars($this->_header_str)."\n".htmlspecialchars($this->_subject)."\n".htmlspecialchars($this->_finalbody).'</pre>';
+		return $msg;
+>>>>>>> desarrollo
 	}
 
 	// --------------------------------------------------------------------

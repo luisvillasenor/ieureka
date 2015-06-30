@@ -533,12 +533,13 @@ class CI_Input {
 			}
 		}
 
-		if ( ! $this->valid_ip($this->ip_address))
+		if ($which !== 'ipv6' && $which !== 'ipv4')
 		{
 			return $this->ip_address = '0.0.0.0';
 		}
 
-		return $this->ip_address;
+		$func = '_valid_'.$which;
+		return $this->$func($ip);
 	}
 
 	// --------------------------------------------------------------------
@@ -630,6 +631,16 @@ class CI_Input {
 				$_COOKIE['$Path'],
 				$_COOKIE['$Domain']
 			);
+
+			// Work-around for PHP bug #66827 (https://bugs.php.net/bug.php?id=66827)
+			//
+			// The session ID sanitizer doesn't check for the value type and blindly does
+			// an implicit cast to string, which triggers an 'Array to string' E_NOTICE.
+			$sess_cookie_name = config_item('cookie_prefix').config_item('sess_cookie_name');
+			if (isset($_COOKIE[$sess_cookie_name]) && ! is_string($_COOKIE[$sess_cookie_name]))
+			{
+				unset($_COOKIE[$sess_cookie_name]);
+			}
 
 			foreach ($_COOKIE as $key => $val)
 			{
