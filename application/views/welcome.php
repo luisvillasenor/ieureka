@@ -3,7 +3,8 @@
   <div class="container">
   <div class="row">
       <div class="col-md-12">
-        <h1>Bienvenido  Zona de Miembros de iEureka Web App</h1>
+        <h1>Bienvenido Mi Sesion en Zona Eureka</h1>
+        <blockquote>Aqui todas la Obras Publicadas Listas para Vender</blockquote>
       </div>
   </div>
   </div>

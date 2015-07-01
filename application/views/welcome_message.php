@@ -34,8 +34,8 @@
   <div class="container">
   <div class="row">
       <div class="col-md-12">
-        <h1></h1>
-        <blockquote>Si piensas que tienes problemas con las Matemáticas, deberías ver mis problemas.<small>Albert Einstein, <cite title="Source Title">Physicist</cite></small></blockquote>
+        <h1>Zona Publica</h1>
+        <blockquote>Aqui todas la Obras Publicadas Listas para Vender</blockquote>
       </div>
   </div>
   </div>
