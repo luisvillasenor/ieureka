@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/gif" href="<?php echo base_url();?>favicon.ico">
-  <title>iEureka Web App</title>   
-  <meta name="description" content="Sistema Estatal de Gestion">
+  <title>iEureka eCommerce Plataform</title>   
+  <meta name="description" content="iEureka eCommerce Plataform">
   <meta name="author" content="Luis G. Villaseñor">    
     <!-- Latest compiled and minified CSS 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
