@@ -13,14 +13,17 @@
 <div class="container">
   <!-- Main component for a primary marketing message or call to action -->
   <div class="row well">
-    <h1>Variables de la SESION:</h1>
+    <h1>Variables de la COOKIE:</h1>
+    <?php $galleta = $this->input->cookie('ci_session');
+      echo $galleta;
+    ?>
   </div>
-  
-<?php foreach ($all_userdata as $key => $value) {
-	# code...
-	echo $key.' = ';
-	echo $value.'<br>';
-} ?>
-
-
+  <div class="row well">
+    <h1>Variables de la SESION:</h1>
+    <?php foreach ($all_userdata as $key => $value) {
+      # code...
+      echo $key.' = ';
+      echo $value.'<br>';
+    } ?>
+  </div>
 </div> <!-- /container -->    

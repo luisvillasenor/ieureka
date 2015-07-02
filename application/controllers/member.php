@@ -29,8 +29,8 @@ class Member extends CI_Controller {
 
 	public function index()
 	{
-		$userdata = $this->session->userdata('user_data');
-		if ( ! empty($userdata)){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'));
 		}
 		else

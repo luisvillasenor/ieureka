@@ -31,8 +31,8 @@ class Admin extends CI_Controller {
 	public function login(){
 		
 		//echo sha1('BTR%08nt'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
-		$userdata = $this->session->userdata('user_data');
-		if ( ! empty($userdata)){
+		$ci_session = $this->input->cookie('ci_session');
+		if ( ! empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'),'refresh');
 		}
 
@@ -89,6 +89,7 @@ class Admin extends CI_Controller {
 		                   'logged_in' => TRUE
 						);
 						$this->session->set_userdata($newdata);
+						$this->input->set_cookie($newdata);
 						redirect(base_url('member/'));
 						break;
 					case 'Administrador':
@@ -99,6 +100,7 @@ class Admin extends CI_Controller {
 		                   'logged_in' => TRUE
 						);
 						$this->session->set_userdata($newdata);
+						$this->input->set_cookie($newdata);
 						redirect(base_url('member/'));
 						break;
 					case 'Capturista':
@@ -109,6 +111,7 @@ class Admin extends CI_Controller {
 		                   'logged_in' => TRUE
 						);
 						$this->session->set_userdata($newdata);
+						$this->input->set_cookie($newdata);
 						redirect(base_url('member/'));
 						break;
 					default:
@@ -133,30 +136,26 @@ class Admin extends CI_Controller {
 				echo 'Por favor solicite ayuda al administrador del sitio';
 				echo '</p>';
 				echo '</div>';
-				redirect(base_url('admin/logout'),'refresh');
+				redirect(base_url('admin/logout'));
 				}
 		}
-		redirect(base_url('admin/logout'));
+		//redirect(base_url('admin/logout'));
 	}
 
 	public function logout(){
-		$session_id = $this->session->userdata('session_id');
-		if (empty($session_id) === FALSE)
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===FALSE)
 		{
-			$userdata = array(
+			$newdata = array(
                'username'  => '',
                'rol'       => '',
                'status'    => '',
                'logged_in' => FALSE
 			);
-			$this->session->unset_userdata($userdata);
+			$this->session->unset_userdata($newdata);
 			$this->session->sess_destroy();
-			redirect(base_url(),'refresh');
 		}
-		else
-		{
-			redirect(base_url('member/'),'refresh');
-		}
+		redirect(base_url());
 	}
 
 

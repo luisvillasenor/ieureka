@@ -41,6 +41,23 @@
   </div>
 </div>
 
+<div class="container">
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="row well">
+    <h1>Variables de la $_COOKIE:</h1>
+    <?php 
+      print_r($_COOKIE);
+    ?>
+  </div>
+  <div class="row well">
+    <h1>Variables de la SESSION:</h1>
+    <?php $galleta = $this->input->cookie('ci_session');
+      echo $galleta;
+    ?>
+  </div>
+</div> <!-- /container -->    
+
+
 <nav class="navbar-fixed-bottom">
   <div class="container">
   <!-- Example row of columns -->
