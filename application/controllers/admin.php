@@ -30,7 +30,7 @@ class Admin extends CI_Controller {
 	
 	public function login(){
 		
-		//echo sha1('BTR%08nt'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
+		//echo sha1('test01'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
 		$ci_session = $this->input->cookie('ci_session');
 		if ( ! empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'),'refresh');
