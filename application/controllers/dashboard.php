@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Member extends CI_Controller {
+class Dashboard extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -34,12 +34,34 @@ class Member extends CI_Controller {
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->view('header');
-			$this->load->view('navbar');
-			$this->load->view('welcome',$data);
+			$this->load->view('dashboard_view',$data);
 			$this->load->view('footer');
 		}
 	}
+
+/*
+	public function top10_dependencia()
+	{
+		//$recurso = $this->uri->segment(2);
+		// obtiene el controler y metodo del segmento URL
+		$acceso = $this->permisos_model->verify_componente(ROL,COMPONENTE);
+		$resource = $this->permisos_model->verify_recursos(ROL,COMPONENTE,$recurso);
+		if ($acceso == true AND $resource == true) {
+ 		  	$data['componentes'] = $this->permisos_model->componentes(ROL);
+ 		  	$this->load->model('solicitudes_model');
+			$this->load->model('dependencias_model');
+ 		  	$data['get_dependencias'] = $this->dependencias_model->get_dependencias();
+ 		  	$data['top10_dependencia'] = $this->solicitudes_model->top10_dependencia();
+ 		  	$this->load->view('header');
+			$this->load->view('dashboard_top10_dependencia',$data);
+			$this->load->view('footer');				
+		} else { die("You do not have permissions to read this resource"); }
+	}
+*/	
+
+
+
 }
 
-/* End of file member.php */
-/* Location: ./application/controllers/member.php */
+/* End of file welcome.php */
+/* Location: ./application/controllers/welcome.php */

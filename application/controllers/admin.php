@@ -90,7 +90,7 @@ class Admin extends CI_Controller {
 						);
 						$this->session->set_userdata($newdata);
 						$this->input->set_cookie($newdata);
-						redirect(base_url('member/'));
+						redirect(base_url('dashboard/'));
 						break;
 					case 'Administrador':
 						$newdata = array(
@@ -101,9 +101,20 @@ class Admin extends CI_Controller {
 						);
 						$this->session->set_userdata($newdata);
 						$this->input->set_cookie($newdata);
+						redirect(base_url('dashboard/'));
+						break;
+					case 'Autor':
+						$newdata = array(
+		                   'username'  => $clean_email_address,
+		                   'rol'       => 'Capturista',
+		                   'status'    => $isActive,
+		                   'logged_in' => TRUE
+						);
+						$this->session->set_userdata($newdata);
+						$this->input->set_cookie($newdata);
 						redirect(base_url('member/'));
 						break;
-					case 'Capturista':
+					case 'Revisor':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
 		                   'rol'       => 'Capturista',

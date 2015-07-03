@@ -17,6 +17,17 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct(){/* esta funcion sobre escribe el CI_Controller y toma PHP nativo*/
+
+		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
+		//$this->load->library('session');
+		//$this->load->library('encrypt');
+		//$this->load->library('cart');
+		//session_start();
+		//$msg = 'My secret message';
+		//$encrypted_string = $this->encrypt->encode($msg);
+	}
+
 	public function index()
 	{
 		$this->load->view('header');

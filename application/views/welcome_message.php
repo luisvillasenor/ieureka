@@ -55,7 +55,8 @@
       echo $galleta;
     ?>
   </div>
-</div> <!-- /container -->    
+</div> <!-- /container -->  
+
 
 
 <nav class="navbar-fixed-bottom">
