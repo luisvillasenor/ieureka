@@ -12,8 +12,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">MiBiblioteca</a></li>
-        <li><a href="#">MiPefil</a></li>
+        <li><a href="<?php echo base_url('shop/');?>">Tienda</a></li>
         <li><a href="<?php echo base_url('admin/logout');?>">(<?php echo $session_id = $this->session->userdata('username');?>) <span class="glyphicon glyphicon-off"> Salir</span></a></li>
       </ul>
     </div><!--/.nav-collapse -->

@@ -3,7 +3,7 @@
   <div class="container">
   <div class="row">
       <div class="col-md-12">
-        <h1>Bienvenido Zona Autores</h1>
+        <h1>Bienvenido Zona <?php echo $this->session->userdata('rol'); ?></h1>
         <blockquote>Aqui todas la Obras Publicadas Listas para Vender</blockquote>
       </div>
   </div>

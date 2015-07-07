@@ -25,33 +25,40 @@
       <div class="row" align="center">
         <div class="col-lg-12">
           <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="col-md-4">                       
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Datos</h3>
-                  </div>
-                  <div class="panel-body" align="center">
-                    
-                  </div>
-                </div>
+              <div class="panel-heading">
+                <h3 class="panel-title">Datos</h3>
               </div>
-              <div class="col-md-8">                       
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Datos</h3>
-                  </div>
-                  <div class="panel-body" align="center">
-                    
-                  </div>
-                </div>
+              <div class="panel-body" align="center">
+
+
+                <h1>Variables de la COOKIE:</h1>
+                <?php $galleta = $this->input->cookie('ci_session');
+                  echo $galleta;
+                ?>
+                <h1>Variables de la SESION:</h1>
+                <?php foreach ($all_userdata as $key => $value) {
+                  # code...
+                  echo $key.' = ';
+                  echo $value.'<br>';
+                } ?>
+                
               </div>
-            </div>
+           </div>
           </div>   
         </div>
       </div><!-- row well -->
+
+
+
     </div>
   </div><!-- /#page-content-wrapper -->
+
+
+
+
+
+
+
 
 </div>
 <!-- /#wrapper -->

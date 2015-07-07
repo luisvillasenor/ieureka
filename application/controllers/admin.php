@@ -1,38 +1,19 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	
 	function __construct(){/* esta funcion sobre escribe el CI_Controller y toma PHP nativo*/
 
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
 		$this->load->library('session');
 		$this->load->library('encrypt');
-		//session_start();
-		//$msg = 'My secret message';
-		//$encrypted_string = $this->encrypt->encode($msg);
 	}
 	
 	public function login(){
 		
 		//echo sha1('test01'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
-		$ci_session = $this->input->cookie('ci_session');
-		if ( ! empty($ci_session)===TRUE){
+		$ci_session = $this->session->userdata('user_data');
+		if ( empty($ci_session)===FALSE){
 			redirect(base_url('admin/logout'),'refresh');
 		}
 
@@ -58,16 +39,6 @@ class Admin extends CI_Controller {
 			// Verifica si el Usuario esta Activo - Regresa TRUE o FALSE
 			if (($res == TRUE) AND ($isActive == TRUE)){
 			// Si hay una cuenta registrada en el sistema y Activa
-				
-				$rol2['verify_rol2'] = $this->admin_model->verify_rol($clean_email_address,$clean_password);
-				foreach ($rol2['verify_rol2'] as $key2 => $value2) {
-					# code...
-					if ($key2 == 'geo') {
-						# code...
-						$geo = $value2;
-					}
-				} 
-
 				// Actualiza fecha de ultimo acceso
 				$this->admin_model->up_date($clean_email_address);
 
@@ -84,7 +55,7 @@ class Admin extends CI_Controller {
 					case 'Superadmin':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
-		                   'rol'       => 'Superadmin',
+		                   'rol'       => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
@@ -95,7 +66,7 @@ class Admin extends CI_Controller {
 					case 'Administrador':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
-		                   'rol'       => 'Administrador',
+		                   'rol'       => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
@@ -106,24 +77,24 @@ class Admin extends CI_Controller {
 					case 'Autor':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
-		                   'rol'       => 'Capturista',
+		                   'rol'       => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
 						$this->session->set_userdata($newdata);
 						$this->input->set_cookie($newdata);
-						redirect(base_url('member/'));
+						redirect(base_url('member/autor'));
 						break;
 					case 'Revisor':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
-		                   'rol'       => 'Capturista',
+		                   'rol'       => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
 						$this->session->set_userdata($newdata);
 						$this->input->set_cookie($newdata);
-						redirect(base_url('member/'));
+						redirect(base_url('member/revisor'));
 						break;
 					default:
 						echo '<div class="alert alert-block alert-error span10">';
@@ -154,8 +125,8 @@ class Admin extends CI_Controller {
 	}
 
 	public function logout(){
-		$ci_session = $this->input->cookie('ci_session');
-		if (empty($ci_session)===FALSE)
+		$ci_session = $this->session->userdata('user_data');
+		if (empty($ci_session)===TRUE)
 		{
 			$newdata = array(
                'username'  => '',
