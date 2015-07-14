@@ -137,7 +137,7 @@ class Admin extends CI_Controller {
 			$this->session->unset_userdata($newdata);
 			$this->session->sess_destroy();
 		}
-		redirect(base_url());
+		redirect(base_url('shop/'));
 	}
 
 

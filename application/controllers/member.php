@@ -49,8 +49,9 @@ class Member extends CI_Controller {
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->view('header');
-			$this->load->view('navbar');
-			$this->load->view('welcome',$data);
+			//$this->load->view('navbar');
+			$this->load->view('navbarautor');
+			$this->load->view('welcome_autor',$data);
 			$this->load->view('footer');
 		}
 	}

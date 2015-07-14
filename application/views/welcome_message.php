@@ -24,6 +24,7 @@
         ?>
         </div>
         <button type="submit" class="btn btn-danger">Acceso</button>
+        <a href="<?php echo base_url('users/');?>" class="btn btn-danger">Registro</a>
         <?php echo form_close(); ?>
     </div><!--/.nav-collapse -->  
   </div>
@@ -51,7 +52,7 @@
   </div>
   <div class="row well">
     <h1>Variables de la SESSION:</h1>
-    <?php $galleta = $this->input->cookie('ci_session');
+      <?php $galleta = $this->input->cookie('ci_session');
       echo $galleta;
     ?>
   </div>
