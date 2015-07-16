@@ -25,8 +25,12 @@
 			</fieldset>
       </div>
       <div class="col-xs-6">
-        <h1></h1>
-
+        <h2>¿Cómo?</h2>
+        <ul>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
       </div>
   	</div>
   </div>
@@ -72,19 +76,19 @@
 <div class="container">
   <div class="well">
   	<div class="row">
-      <div class="col-md-3">
-        <h4><img src="..." class="img-responsive" alt="Responsive image"></h4>
+      <div class="col-xs-3">
+        <h5><img src="..." class="img-responsive" alt="Responsive image"></h5>
       </div>
-      <div class="col-md-3">
-        <h4>Título de la obra</h4>
+      <div class="col-xs-3">
+        <h5>Título de la obra</h5>
 
       </div>
-      <div class="col-md-3">
-        <h4>Estado:</h4>
-        <h4>Ult.Actualización</h4>
+      <div class="col-xs-3">
+        <h5>Estado:</h5>
+        <h5>Ult.Actualización</h5>
 
       </div>
-      <div class="col-md-3">
+      <div class="col-xs-3">
         <!-- Indicates caution should be taken with this action -->
 		<button type="button" class="btn btn-warning">Actualizar</button>
 		<span id="helpBlock" class="help-block">Asigne una portada, suba su archivo, categorice para facilitar su busqueda, etc...</span>

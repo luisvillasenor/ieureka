@@ -52,7 +52,7 @@ class Admin extends CI_Controller {
 				}	
 				
 				switch ($clean_rol) {
-					case 'Superadmin':
+/*					case 'Superadmin':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
 		                   'rol'       => $clean_rol,
@@ -74,7 +74,7 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url('dashboard/'));
 						break;
-					case 'Autor':
+*/					case 'Autor':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
 		                   'rol'       => $clean_rol,
@@ -85,7 +85,7 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url('member/autor'));
 						break;
-					case 'Revisor':
+/*					case 'Revisor':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
 		                   'rol'       => $clean_rol,
@@ -96,7 +96,7 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url('member/revisor'));
 						break;
-					default:
+*/					default:
 						echo '<div class="alert alert-block alert-error span10">';
 						echo '<button type="button" class="close" data-dismiss="alert">x</button>';
 						echo '<h4 class="alert-heading">Ups ! Parece ser que Usted no es Miembro de este Sitio !</h4>';
@@ -110,15 +110,15 @@ class Admin extends CI_Controller {
 						//$this->logout();
 						break;
 				}
-				
+				redirect(base_url('admin/logout'),'refresh');
 			} else {
 				echo '<div class="alert alert-block alert-error span10">';
-				echo '<h4 class="alert-heading">Ups ! Parece ser que Usted no es Miembro de este Sitio ó alguno de sus Datos de Inicio de Sesion al Sistema no es Incorrecto. !</h4>';
+				echo '<h4 class="alert-heading">UPSs ! Parece ser que Usted no es Miembro de este Sitio ó alguno de sus Datos de Inicio de Sesion al Sistema no es Incorrecto. !</h4>';
 				echo '<p>';
 				echo 'Por favor solicite ayuda al administrador del sitio';
 				echo '</p>';
 				echo '</div>';
-				redirect(base_url('admin/logout'));
+				redirect(base_url('admin/logout'),'refresh');
 				}
 		}
 		//redirect(base_url('admin/logout'));
@@ -137,14 +137,8 @@ class Admin extends CI_Controller {
 			$this->session->unset_userdata($newdata);
 			$this->session->sess_destroy();
 		}
-		redirect(base_url('shop/'));
+		redirect(base_url());
 	}
 
 
-
-
-
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/admin.php */

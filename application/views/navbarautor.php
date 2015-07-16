@@ -1,24 +1,20 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url('shop/index');?>">
-        <img alt="Tienda" src="...">
-      </a>      
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="<?php echo base_url('member/autor');?>"></a>      
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo base_url('obras/index');?>">Obras <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Informes</a></li>
+      <ul class="nav navbar-nav navbar-left">
+        <li class="active"><a href="<?php echo base_url('obras/index');?>">Mis Obras <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Mis Informes</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Título">
-        </div>
-        <button type="submit" class="btn btn-default">Buscar</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a>Hola: <?php echo $this->session->userdata('username');?></a></li>
         <li class="dropdown">          
