@@ -22,6 +22,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>bootstrap-3.3.4-dist/css/bootstrap.min.css">
   <!-- Custom CSS -->
   <link href="<?php echo base_url();?>bootstrap-3.3.4-dist/css/simple-sidebar.css" rel="stylesheet">
+  <link href="<?php echo base_url();?>bootstrap-3.3.4-dist/css/signin.css" rel="stylesheet">
   <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/ie-emulation-modes-warning.js"></script>
   <link rel="stylesheet" href="<?php echo base_url();?>jquery-ui-1.11.4/jquery-ui.css">
   <style type="text/css">

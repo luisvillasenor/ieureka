@@ -10,13 +10,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
-            <li><a href="<?php echo base_url('users/index');?>">Registrese aquí</a></li>
-          </ul>
-        </li>
+      <li><a href="<?php echo base_url();?>">Login</a></li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li><a href="<?php echo base_url();?>">Actividades</a></li>
@@ -26,11 +21,27 @@
   </div>
 </nav>
 
+<div class="container">
 
-<!-- Modal -->
+  
+<?php echo form_open("admin/login","class='form-signin'") ?>    
+    <h2 class="form-signin-header">Por favor inicie sesion</h2>
+    <label for="inputEmail" class="sr-only">Direccion de Correo</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Direccion de Correo" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <a type="button" class="btn btn-lg btn-warning btn-block" href="<?php echo base_url('users/index');?>">Crear Cuenta</a>
+<?php echo form_close() ?>
+  
+</div>
+
+
+<!-- Modal 
+
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-      <!-- Modal content-->
+      
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -57,3 +68,4 @@
       </div>
   </div>
 </div>
+-->

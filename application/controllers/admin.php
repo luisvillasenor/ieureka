@@ -7,17 +7,18 @@ class Admin extends CI_Controller {
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
 		$this->load->library('session');
 		$this->load->library('encrypt');
+		$this->load->helper('cookie');
 	}
 	
 	public function login(){
 		
 		//echo sha1('test01'); die();// Esta funcion te regresa el texto encriptado. Se usa tener un password encriptado*/
-		$ci_session = $this->session->userdata('user_data');
-		if ( empty($ci_session)===FALSE){
-			redirect(base_url('admin/logout'),'refresh');
+		$user_data = $this->session->userdata('session_id');
+		if ( $user_data == FALSE ){
+			$this->logout();
 		}
 
-		//$this->load->library('form_validation');
+		
 		$this->form_validation->set_rules('email_address', 'Dirección de Email', 'trim|required|valid_email|xss_clean');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
 
@@ -110,7 +111,7 @@ class Admin extends CI_Controller {
 						//$this->logout();
 						break;
 				}
-				redirect(base_url('admin/logout'),'refresh');
+				$this->logout();
 			} else {
 				echo '<div class="alert alert-block alert-error span10">';
 				echo '<h4 class="alert-heading">UPSs ! Parece ser que Usted no es Miembro de este Sitio ó alguno de sus Datos de Inicio de Sesion al Sistema no es Incorrecto. !</h4>';
@@ -118,17 +119,17 @@ class Admin extends CI_Controller {
 				echo 'Por favor solicite ayuda al administrador del sitio';
 				echo '</p>';
 				echo '</div>';
-				redirect(base_url('admin/logout'),'refresh');
+				$this->logout();
 				}
 		}
 		//redirect(base_url('admin/logout'));
 	}
 
 	public function logout(){
-		$ci_session = $this->session->userdata('session_id');
-		if (empty($ci_session) === FALSE)
-		{
-			$this->session->sess_destroy($ci_session);
+
+		$user_data = $this->session->userdata('user_data');
+		if ( isset($user_data) == TRUE ){
+			$this->session->sess_destroy();// borra sesion actual
 		}
 		redirect(base_url());
 	}
