@@ -10,12 +10,9 @@ Latest compiled and minified JavaScript
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/jquery-1.11.3.min.js" type="text/javascript"></script>  
 -->
-
-<script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/jquery-1.11.2.min.js" type="text/javascript"></script>  
-
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/bootstrap.min.js" type="text/javascript"></script>
 
-
+<script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/jquery-1.11.2.min.js" type="text/javascript"></script>  
 
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/affix.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/alert.js" type="text/javascript"></script>

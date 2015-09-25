@@ -95,15 +95,14 @@ $this->index();
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
-				$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
-				//$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
+				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
 				echo "url de validacion => " . $url;
 				echo "<br>";				
 
 				$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
 
 			//}
-				echo anchor($url, $url, 'class="link-class"');
+echo anchor($url, $url, 'class="link-class"');
 
 		}
 		die;
@@ -141,9 +140,9 @@ $this->index();
 			Para activar la cuenta de click en la url de activacion.
 
 		');
-		//$this->email->send();
+		$this->email->send();
 
-		echo $this->email->print_debugger();
+		//echo $this->email->print_debugger();
 	}
 
 }

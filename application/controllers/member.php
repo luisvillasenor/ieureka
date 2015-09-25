@@ -12,7 +12,7 @@ class Member extends CI_Controller {
 	public function index()
 	{
 		$ci_session = $this->input->cookie('ci_session');
-		if ( empty($ci_session) === FALSE ){
+		if (empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'));
 		}
 		else
