@@ -45,7 +45,7 @@ class Admin extends CI_Controller {
 				$rol3 = $this->admin_model->verify_rol($clean_email_address,$clean_password);
 				
 				foreach ($rol3 as $key3 => $value3) {
-					if ($key3 == 'rol') {
+					if ($key3 == 'id_rol') {
 						# code...
 						$clean_rol = $value3;
 					}
@@ -74,10 +74,10 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url('dashboard/'));
 						break;
-*/					case 'Autor':
+*/					case '1':
 						$newdata = array(
 		                   'username'  => $clean_email_address,
-		                   'rol'       => $clean_rol,
+		                   'id_rol'       => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
@@ -125,17 +125,10 @@ class Admin extends CI_Controller {
 	}
 
 	public function logout(){
-		$ci_session = $this->session->userdata('user_data');
-		if (empty($ci_session)===TRUE)
+		$ci_session = $this->session->userdata('session_id');
+		if (empty($ci_session) === FALSE)
 		{
-			$newdata = array(
-               'username'  => '',
-               'rol'       => '',
-               'status'    => '',
-               'logged_in' => FALSE
-			);
-			$this->session->unset_userdata($newdata);
-			$this->session->sess_destroy();
+			$this->session->sess_destroy($ci_session);
 		}
 		redirect(base_url());
 	}
