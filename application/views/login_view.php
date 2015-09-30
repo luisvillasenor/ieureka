@@ -13,9 +13,8 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!-- <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li> -->
-            <li><a href="<?php echo base_url('users/index');?>">Registrese aquí</a></li>
             <li><a href="<?php echo base_url('users/login');?>"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
+            <li><a href="<?php echo base_url('users/index');?>">Registrese aquí</a></li>
           </ul>
         </li>
       </ul>
@@ -27,17 +26,17 @@
   </div>
 </nav>
 
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+  	<div class="row">
+      <div class="col-md-6">
+        <h1>Acceso</h1>
+			<fieldset>
+			
+      
+      
 
-<!-- Modal 
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-      Modal content
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
-        </div>
-        <div class="modal-body">
 <?php echo form_open("admin/login","rol='form'") ?>
             <div class="form-group">
               <label for="email_address"><span class="glyphicon glyphicon-user"></span> Username</label>
@@ -49,13 +48,13 @@
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
 <?php echo form_close() ?>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
-          <p>No es miembro? <a href="<?php echo base_url('users/index');?>">Registrese aquí</a></p>
-          
-        </div>
+
+      
+
+
+			</fieldset>
       </div>
+  	</div>
   </div>
 </div>
--->
+

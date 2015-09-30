@@ -25,6 +25,22 @@ class Users extends CI_Controller {
 		}
 	}
 
+	public function login()
+	{
+		$ci_session = $this->session->userdata('user_data');
+		if (empty($ci_session)===FALSE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->view('header');
+			//$this->load->view('navbar');
+			$this->load->view('login_view',$data);
+			$this->load->view('footer');
+		}
+	}
+
 	public function activacion_cuenta($token)
 	{
 		if ( empty($token) === '' ){
@@ -42,9 +58,10 @@ class Users extends CI_Controller {
 					# code...
 					echo "CUENTA ACTIVADA !!!";
 					echo "<br>";
-					$this->index();
+					//$this->index();
 
 					$this->activacion_model->borrar_token($id_activacion);
+					redirect(base_url('user/login'),'refresh');
 //header("Location: http://dev.iceberg9.com/ieureka/");
 				}
 			}else{
@@ -95,14 +112,15 @@ $this->index();
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
-				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
+				//$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
+				$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
 				echo "url de validacion => " . $url;
 				echo "<br>";				
 
-				$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
+				//$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
 
 			//}
-echo anchor($url, $url, 'class="link-class"');
+			echo anchor($url, $url, 'class="link-class"');
 
 		}
 		die;
