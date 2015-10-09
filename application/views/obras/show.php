@@ -42,7 +42,9 @@
   	<div class="row">
       <div class="col-xs-3">
         <h1>Mis Obras</h1>
+        <small>[ <?php echo $this->session->userdata('username');?> ]</small>
       </div>
+      <br>
       <div class="col-xs-9">
         <nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -72,26 +74,31 @@
   	</div>
 </div>
 
-<?php for ($i=0; $i < 3; $i++) { ?>
+<?php foreach ($obras_data as $obra_item) { ?>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container">
   <div class="well">
   	<div class="row">
       <div class="col-xs-3">
+      	<h4>Portada Obra [<?php echo $obra_item->id_obra; ?>]</h4>
         <h5><img src="..." class="img-responsive" alt="Responsive image"></h5>
       </div>
       <div class="col-xs-3">
-        <h5>Título de la obra</h5>
-
+        <h4>Título de la obra</h4>
+        <h5><?php echo $obra_item->titulo; ?></h5>
+        <h4>Descripcion Breve</h4>
+        <h5><?php echo $obra_item->descripcion; ?></h5>
       </div>
       <div class="col-xs-3">
-        <h5>Estado:</h5>
-        <h5>Ult.Actualización</h5>
-
+        <h4>Estado:</h4>
+        <h5><?php echo $obra_item->borrador; ?></h5>
+        <h4>Fecha de Alta</h4>
+        <h5><?php echo $obra_item->fecha_alta; ?></h5>
       </div>
       <div class="col-xs-3">
         <!-- Indicates caution should be taken with this action -->
-		<button type="button" class="btn btn-warning">Actualizar</button>
+        <a type="button" class="btn btn-primary btn-block" href="<?php echo base_url("obras/edit/".$obra_item->id_obra."/".$obra_item->id_user."");?>">Actualizacion Rapida</a>
+		<button type="button" class="btn btn-warning btn-block">Actualizar Detalles</button>
 		<span id="helpBlock" class="help-block">Asigne una portada, suba su archivo, categorice para facilitar su busqueda, etc...</span>
 
       </div>

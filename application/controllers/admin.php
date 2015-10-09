@@ -45,6 +45,10 @@ class Admin extends CI_Controller {
 				$rol3 = $this->admin_model->verify_rol($clean_email_address,$clean_password);
 				
 				foreach ($rol3 as $key3 => $value3) {
+					if ($key3 == 'id_user') {
+						# code...
+						$id_user = $value3;
+					}
 					if ($key3 == 'id_rol') {
 						# code...
 						$clean_rol = $value3;
@@ -76,6 +80,7 @@ class Admin extends CI_Controller {
 						break;
 */					case '1':
 						$newdata = array(
+		                   'id_user'  => $id_user,
 		                   'username'  => $clean_email_address,
 		                   'id_rol'       => $clean_rol,
 		                   'status'    => $isActive,
@@ -83,7 +88,7 @@ class Admin extends CI_Controller {
 						);
 						$this->session->set_userdata($newdata);
 						$this->input->set_cookie($newdata);
-						redirect(base_url('member/autor'));
+						redirect(base_url("users/show/".$id_user.""));
 						break;
 /*					case 'Revisor':
 						$newdata = array(

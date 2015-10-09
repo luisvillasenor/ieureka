@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Member extends CI_Controller {
+class Perfil extends CI_Controller {
 
 	function __construct(){/* esta funcion sobre escribe el CI_Controller y toma PHP nativo*/
 
@@ -24,8 +24,8 @@ class Member extends CI_Controller {
 			$this->load->view('footer');
 		}
 	}
-	public function revisor()
-	{
+
+	public function create(){
 		$ci_session = $this->input->cookie('ci_session');
 		if (empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'));
@@ -33,32 +33,35 @@ class Member extends CI_Controller {
 		else
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
-			$this->load->view('header');
-			$this->load->view('navbar');
-			$this->load->view('welcome',$data);
-			$this->load->view('footer');
+			$this->load->model('perfil_model');			
+			$id_perfil = $this->perfil_model->insert();
+			redirect(base_url("perfil/show/".$id_perfil.""));
 		}
 	}
-	public function autor()
-	{
+	public function show($id_perfil){
 		$ci_session = $this->input->cookie('ci_session');
-		if ( empty($ci_session) === TRUE ){
+		if (empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'));
 		}
 		else
 		{
-			
 			$data['all_userdata'] = $this->session->all_userdata();
-			// print_r($data['all_userdata']);
-
+			$this->load->model('perfil_model');
+			$data['perfil_data'] = $this->perfil_model->show($id_perfil);
 			$this->load->view('header');
-			//$this->load->view('navbar');
 			$this->load->view('navbarautor');
-			$this->load->view('welcome_autor',$data);
+			$this->load->view('perfil/show',$data);
 			$this->load->view('footer');
 		}
 	}
+
+	//public function new(){}
+	//public function edit(){}
+	//public function update(){}
+	//public function destroy(){}
+
+
 }
 
 /* End of file member.php */
-/* Location: ./application/controllers/member.php */
+/* Location: ./application/controllers/perfil.php */

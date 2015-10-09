@@ -17,6 +17,7 @@
 |
 */
 $config['base_url']	= 'http://localhost/ieureka';
+//$config['base_url']	= 'http://dev.iceberg9.com/ieureka/';
 
 
 /*

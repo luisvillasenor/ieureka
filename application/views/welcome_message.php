@@ -10,18 +10,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <!-- <li><a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li> -->
-            <li><a href="<?php echo base_url('users/index');?>">Registrese aquí</a></li>
-            <li><a href="<?php echo base_url('users/login');?>"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
-          </ul>
-        </li>
+        
+        <li><a href="<?php echo base_url('users/login');?>"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
+        <li><a href="<?php echo base_url('users/index');?>">Registrese aquí</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="<?php echo base_url();?>">Actividades</a></li>
-          <li><a href="<?php echo base_url();?>">Que es iEureka?</a></li>        
+          <li>
+            
+          </li>          
       </ul>
     </div>
   </div>

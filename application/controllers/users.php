@@ -112,8 +112,8 @@ $this->index();
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
-				//$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
-				$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
+				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
+				//$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
 				echo "url de validacion => " . $url;
 				echo "<br>";				
 
@@ -125,6 +125,36 @@ $this->index();
 		}
 		die;
 	}
+
+	public function update(){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('users_model');			
+			$id_user = $this->users_model->update();
+			redirect(base_url("users/show/".$id_user.""));
+		}
+	}
+	public function show($id_user){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('users_model');
+			$data['perfil_data'] = $this->users_model->show($id_user);
+			$this->load->view('header');
+			$this->load->view('navbarautor');
+			$this->load->view('users/show',$data);
+			$this->load->view('footer');
+		}
+	}	
 
 	public function notificacion_new_user($correo = 'UNO',$id_rol = 'DOS',$password = 'TRES',$terminos = 'CUATRO',$url = 'CINCO'){
 		

@@ -3,25 +3,28 @@
   <div class="well">
   	<div class="row">
       <div class="col-xs-6">
-        <h1>Nueva Obra</h1>
+        <h1>Actualización Rápida</h1>
 			<fieldset>
-			<legend>Registro rápido</legend>
-			<?php echo form_open("obras/create","rol='form' class='' ") ?>
+			<?php echo form_open("obras/quick_update","rol='form' class='' ") ?>
+      <?php foreach ($obra_data as $ob_item) { ?>
+      <legend>Obra [<?php echo $ob_item->id_obra; ?>]</legend>
 			  <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
+        <input type="hidden" name="id_obra" value="<?php echo $ob_item->id_obra; ?>">
 			  <div class="form-group">
 			    <label for="titulo">Título</label>
-			    <input type="text" class="form-control" name="titulo" placeholder="Título">
+			    <input type="text" class="form-control" name="titulo" value="<?php echo $ob_item->titulo; ?>">
 			  </div>
 			  <div class="form-group">
 			    <label for="descripcion">Descripción</label>
-			    <textarea type="text" class="form-control" name="descripcion" placeholder="Descripción"></textarea>
+			    <textarea type="text" class="form-control" name="descripcion"><?php echo $ob_item->descripcion; ?></textarea>
 			  </div>
 			  <div class="checkbox">
 			    <label>
-			      <input type="checkbox" name="borrador"> Borrador
+			      <input type="checkbox" name="borrador" value="<?php echo $ob_item->borrador; ?>"> Borrador
 			    </label>
 			  </div>
-			  <button type="submit" class="btn btn-warning">Guardar</button>
+			  <button type="submit" class="btn btn-warning">Actualizar</button>
+      <?php } ?>  
 			<?php echo form_close() ?>
 			</fieldset>
       </div>
@@ -42,7 +45,9 @@
   	<div class="row">
       <div class="col-xs-3">
         <h1>Mis Obras</h1>
+        <small>[ <?php echo $this->session->userdata('username');?> ]</small>
       </div>
+      <br>
       <div class="col-xs-9">
         <nav class="navbar navbar-default">
 		  <div class="container-fluid">
@@ -72,26 +77,31 @@
   	</div>
 </div>
 
-<?php for ($i=0; $i < 3; $i++) { ?>
+<?php foreach ($obras_data as $obra_item) { ?>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="container">
   <div class="well">
   	<div class="row">
       <div class="col-xs-3">
+      	<h4>Portada Obra [<?php echo $obra_item->id_obra; ?>]</h4>
         <h5><img src="..." class="img-responsive" alt="Responsive image"></h5>
       </div>
       <div class="col-xs-3">
-        <h5>Título de la obra</h5>
-
+        <h4>Título de la obra</h4>
+        <h5><?php echo $obra_item->titulo; ?></h5>
+        <h4>Descripcion Breve</h4>
+        <h5><?php echo $obra_item->descripcion; ?></h5>
       </div>
       <div class="col-xs-3">
-        <h5>Estado:</h5>
-        <h5>Ult.Actualización</h5>
-
+        <h4>Estado:</h4>
+        <h5><?php echo $obra_item->borrador; ?></h5>
+        <h4>Fecha de Alta</h4>
+        <h5><?php echo $obra_item->fecha_alta; ?></h5>
       </div>
       <div class="col-xs-3">
         <!-- Indicates caution should be taken with this action -->
-		<button type="button" class="btn btn-warning">Actualizar</button>
+<a type="button" class="btn btn-primary" href="<?php echo base_url("obras/edit/".$obra_item->id_obra."/".$obra_item->id_user."");?>">Actualizacion Rapida</a>
+		<button type="button" class="btn btn-warning">Actualizar Detalles</button>
 		<span id="helpBlock" class="help-block">Asigne una portada, suba su archivo, categorice para facilitar su busqueda, etc...</span>
 
       </div>

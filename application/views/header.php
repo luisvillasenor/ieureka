@@ -97,7 +97,5 @@
       background-color: #f9f9f9;
   }
   </style>
-
-
 </head>
 <body>

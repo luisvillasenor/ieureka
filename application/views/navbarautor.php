@@ -8,23 +8,17 @@
       </button>
       <a class="navbar-brand" href="<?php echo base_url('member/autor');?>"></a>      
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a href="<?php echo base_url('obras/index');?>">Actividades <span class="sr-only">(current)</span></a></li>
-        <li><a href="<?php echo base_url('member/autor');?>">Que es iEureka?</a></li>
+        <li class="active"><a href="<?php echo base_url("obras/show/".$this->session->userdata('id_user')."");?>">Mis Obras <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a>Hola: <?php echo $this->session->userdata('username');?></a></li>
         <li class="dropdown">          
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vista General del Perfil <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="<?php echo base_url('member/autor');?>"><button type="button" class="btn btn-primary navbar-btn">Editar Perfil</button></a></li>
-            <li><a href="<?php echo base_url('member/autor');?>"><button type="button" class="btn btn-primary navbar-btn">Notificaciones</button></a></li>
-            <li><a href="<?php echo base_url('member/autor');?>"><button type="button" class="btn btn-primary navbar-btn">Cambiar Contraseña</button></a></li>
-            <li><a href="<?php echo base_url('member/autor');?>"><button type="button" class="btn btn-primary navbar-btn">Historial de Compras</button></a></li>
-            <li><a href="<?php echo base_url('member/autor');?>"><button type="button" class="btn btn-primary navbar-btn">Métodos de Pago</button></a></li>
+            <li><a href="<?php echo base_url("users/show/".$this->session->userdata('id_user')."");?>"><button type="button" class="btn btn-primary navbar-btn">Ver Perfil</button></a></li>
             <li><a href="<?php echo base_url('admin/logout');?>"><button type="button" class="btn btn-default navbar-btn">Cerrar Sesion</button></a></li>
           </ul>
         </li>
