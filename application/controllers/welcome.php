@@ -7,13 +7,17 @@ class Welcome extends CI_Controller {
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
 	}
 
-	public function index()
+	public function indexOld()
 	{
 		$this->load->view('header');
 		$this->load->view('welcome_message');
 		$this->load->view('footer');
 	}
 
+public function index()
+	{
+		redirect(base_url("users/login"));
+	}
 
 }
 

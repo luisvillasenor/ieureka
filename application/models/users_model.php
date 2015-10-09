@@ -19,12 +19,13 @@ class Users_model extends CI_Model{
 		return $query->row_array();
 	}
 
-	public function new_user($correo,$id_rol,$password)
+	public function new_user($correo,$id_rol,$password,$terminos)
 	{
        $data = array(
             'email_address' => $correo,
             'id_rol' => $id_rol,
             'password' => sha1($password),
+            'terminos' => $terminos,
             'fecha_creacion' => date('Y-m-d H:i:s')
         );
         $this->db->insert('users', $data);
@@ -52,7 +53,8 @@ class Users_model extends CI_Model{
 		}
 		# devuelve 1 registro tipo array
 		$query = $this->db->get_where('users',array('id_user' => $id_user));
-		return $query->row_array();
+		//return $query->row_array();
+		return $query->result();
 	}
 
 	public function update()

@@ -47,7 +47,7 @@
   			  </div>
   			  <div class="checkbox">
   			    <label>
-  			      <input type="checkbox" name="terminos" value="Acepto" checked> Acepto Términos y Condiciones
+  			      <input type="checkbox" name="terminos" value="Acepto"> Acepto Términos y Condiciones
   			    </label>
   			  </div>
   			  <button type="submit" class="btn btn-primary">Registrar</button>

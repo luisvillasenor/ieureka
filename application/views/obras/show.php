@@ -9,12 +9,12 @@
 			<?php echo form_open("obras/create","rol='form' class='' ") ?>
 			  <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
 			  <div class="form-group">
-			    <label for="titulo">Título</label>
-			    <input type="text" class="form-control" name="titulo" placeholder="Título">
+			    <label for="titulo">Título de la Obra</label>
+			    <input type="text" class="form-control input-lg" name="titulo" placeholder="Título">
 			  </div>
 			  <div class="form-group">
-			    <label for="descripcion">Descripción</label>
-			    <textarea type="text" class="form-control" name="descripcion" placeholder="Descripción"></textarea>
+			    <label for="descripcion">Descripción breve</label>
+			    <textarea type="text" class="form-control input-lg" rows="6" name="descripcion" placeholder="Descripción"></textarea>
 			  </div>
 			  <div class="checkbox">
 			    <label>
@@ -26,11 +26,20 @@
 			</fieldset>
       </div>
       <div class="col-xs-6">
-        <h2>¿Cómo?</h2>
+        <h2>¿Porqué un Registro rápido?</h2>
+        <blockquote>
+          <h3>VENTAJAS</h3>
+        </blockquote>
         <ul>
-        	<li></li>
-        	<li></li>
-        	<li></li>
+        	<li>El registro rápido te permite de manera fácil agregar en el sistema una obra
+          para después terminar de configurar.
+          </li>
+        	<li>
+            Te permitirá tener un mejor control de las obras que pretendes publicar 
+          </li>
+        	<li>
+           Registra tus borradores para despues terminar de configurar su publicación 
+          </li>
         </ul>
       </div>
   	</div>
@@ -53,7 +62,7 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <form class="navbar-form navbar-left" role="search">
 		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Títulos">
+		          <input type="text" class="form-control input-lg" placeholder="Títulos">
 		        </div>
 		        <button type="submit" class="btn btn-default">Buscar</button>
 		      </form>

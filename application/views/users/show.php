@@ -3,15 +3,15 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Información sobre el Perfil</h3>
+      <h3 class="panel-title"><a type="button" class="btn btn-warning btn-lg" href="<?php echo base_url("users/edit/".$this->session->userdata('id_user')."");?>">Editar Perfil</a> Información sobre el Perfil</h3>
     </div>
     <div class="panel-body">
-    	<?php
-			print_r($perfil_data);
-			foreach ($perfil_data as $key => $value) {
-				# code...
-			}
-		?>
+      <pre>
+        <?php
+          print_r($perfil_data);
+          //echo json_encode($perfil_data, JSON_PRETTY_PRINT);
+        ?>
+      </pre>    	
     </div>
   </div>
 

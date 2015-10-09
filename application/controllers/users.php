@@ -58,6 +58,7 @@ class Users extends CI_Controller {
 					# code...
 					echo "CUENTA ACTIVADA !!!";
 					echo "<br>";
+					echo "YA PUEDE HACER LOGIN AL SISTEMA";
 					//$this->index();
 
 					$this->activacion_model->borrar_token($id_activacion);
@@ -65,7 +66,7 @@ class Users extends CI_Controller {
 //header("Location: http://dev.iceberg9.com/ieureka/");
 				}
 			}else{
-				echo "ERROR";
+				echo "ERROR, CONTACTE AL ADMINISTRADOR";
 $this->index();
 			}
 		}
@@ -108,13 +109,13 @@ $this->index();
 				echo $terminos = $this->input->post('terminos');
 				echo "<br>";
                 //CREA USUARIO Y DEVUELVE EL ID
-				$id_user = $this->users_model->new_user($correo,$id_rol,$password);
+				$id_user = $this->users_model->new_user($correo,$id_rol,$password,$terminos);
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
 				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
 				//$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
-				echo "url de validacion => " . $url;
+				//echo "url de validacion => " . $url;
 				echo "<br>";				
 
 				//$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
@@ -126,6 +127,22 @@ $this->index();
 		die;
 	}
 
+	public function edit($id_user){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('users_model');
+			$data['perfil_data'] = $this->users_model->show($id_user);
+			$this->load->view('header');
+			$this->load->view('navbarautor');
+			$this->load->view('users/edit',$data);
+			$this->load->view('footer');
+		}
+	}	
 	public function update(){
 		$ci_session = $this->input->cookie('ci_session');
 		if (empty($ci_session)===TRUE){
@@ -186,6 +203,7 @@ $this->index();
 			Correo Registrado.- '.$correo.'
 			URL de Activacion.- '.$url.'
 			Para activar la cuenta de click en la url de activacion.
+			Despues ya podra hacer Login
 
 		');
 		$this->email->send();
