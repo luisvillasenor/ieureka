@@ -90,6 +90,18 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url("users/show/".$id_user.""));
 						break;
+					case '2':
+						$newdata = array(
+		                   'id_user'  => $id_user,
+		                   'username'  => $clean_email_address,
+		                   'id_rol'       => $clean_rol,
+		                   'status'    => $isActive,
+		                   'logged_in' => TRUE
+						);
+						$this->session->set_userdata($newdata);
+						$this->input->set_cookie($newdata);
+						redirect(base_url("users/show/".$id_user.""));
+						break;
 /*					case 'Revisor':
 						$newdata = array(
 		                   'username'  => $clean_email_address,

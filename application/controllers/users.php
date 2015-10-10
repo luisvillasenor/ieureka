@@ -62,7 +62,7 @@ class Users extends CI_Controller {
 					//$this->index();
 
 					$this->activacion_model->borrar_token($id_activacion);
-					redirect(base_url('user/login'),'refresh');
+					redirect(base_url('users/login'),'refresh');
 //header("Location: http://dev.iceberg9.com/ieureka/");
 				}
 			}else{
@@ -106,6 +106,7 @@ $this->index();
 				echo "Password => ";
 				echo $password = $this->input->post('password');
 				echo "<br>";
+				echo "TyC => ";
 				echo $terminos = $this->input->post('terminos');
 				echo "<br>";
                 //CREA USUARIO Y DEVUELVE EL ID
@@ -113,8 +114,8 @@ $this->index();
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
-				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
-				//$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
+				//$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
+				$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
 				//echo "url de validacion => " . $url;
 				echo "<br>";				
 

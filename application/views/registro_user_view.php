@@ -50,8 +50,8 @@
   			      <input type="checkbox" name="terminos" value="Acepto"> Acepto Términos y Condiciones
   			    </label>
   			  </div>
-  			  <button type="submit" class="btn btn-primary">Registrar</button>
-  			  <button type="reset" class="btn btn-primary">Reset Datos</button>
+  			  <button type="submit" class="btn btn-primary btn-lg">Registrar</button>
+  			  <button type="reset" class="btn btn-primary btn-lg">Reset Datos</button>
 			<?php echo form_close() ?>
 			</fieldset>
       </div>
