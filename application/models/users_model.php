@@ -21,17 +21,27 @@ class Users_model extends CI_Model{
 
 	public function new_user($correo,$id_rol,$password,$terminos)
 	{
-       $data = array(
-            'email_address' => $correo,
-            'id_rol' => $id_rol,
-            'password' => sha1($password),
-            'terminos' => $terminos,
-            'fecha_creacion' => date('Y-m-d H:i:s')
-        );
-        $this->db->insert('users', $data);
-        $id_user = $this->db->insert_id();
-        // genera user id random para activacion
-   		return $id_user;
+		$this->db->limit(1);
+		$query = $this->db->get_where('users',array('email_address' => $correo));
+		if( $query->num_rows() > 0 ){
+		    $id_user = 0;
+		    return $id_user;
+		}
+		else {
+
+			$data = array(
+	            'email_address' => $correo,
+	            'id_rol' => $id_rol,
+	            'password' => sha1($password),
+	            'terminos' => $terminos,
+	            'fecha_creacion' => date('Y-m-d H:i:s')
+	        );
+	        $this->db->insert('users', $data);
+	        $id_user = $this->db->insert_id();
+	        // genera user id random para activacion
+	   		return $id_user;
+			
+		}
     }
 
 	public function activate_id($id_user)

@@ -31,7 +31,8 @@ Latest compiled and minified JavaScript
 
 <script src="<?php echo base_url();?>jquery-ui-1.11.4/external/jquery/jquery.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
-
+<script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/validator.js" type="text/javascript"></script>
 
 
 

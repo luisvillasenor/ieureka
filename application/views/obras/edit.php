@@ -5,7 +5,8 @@
       <div class="col-xs-6">
         <h1>Actualización Rápida</h1>
 			<fieldset>
-			<?php echo form_open("obras/quick_update","rol='form' class='' ") ?>
+      <?php $attributes = array('class' => '', 'id' => 'FormRegistroEditarQuick'); 
+      echo form_open("obras/quick_update",$attributes) ?>
       <?php foreach ($obra_data as $ob_item) { ?>
       <legend>Obra [<?php echo $ob_item->id_obra; ?>]</legend>
 			  <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">

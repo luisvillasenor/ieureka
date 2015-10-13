@@ -27,7 +27,8 @@
       <div class="well col-md-6">
         <h1>Acceso</h1>
 			<fieldset>
-			<?php echo form_open("admin/login","rol='form'") ?>
+			<?php $attributes = array('class' => '', 'id' => 'FormAcceso'); 
+      echo form_open("admin/login",$attributes) ?>
           <div class="form-group">
             <label for="email_address"><span class="glyphicon glyphicon-user"></span> Username</label>
             <input type="email" name="email_address" class="form-control input-lg" id="email_address" placeholder="Escriba su email">
@@ -44,33 +45,46 @@
       <div class="well col-md-6">
         <h1>Nuevo Registro</h1>
       <fieldset>
-      <?php echo form_open("users/nuevo_usuario") ?>
+      <?php $attributes = array('class' => '', 'id' => 'FormRegistrarNuevaCuenta'); 
+      echo form_open("users/nuevo_usuario",$attributes) ?>
         <input type="hidden" name="grabar" value="si" />
           <div class="form-group">
             <label for="Correo">Email address</label>
-            <input type="email" class="form-control input-lg" name="correo" placeholder="Correo">
+            <input type="email" class="form-control input-lg" name="correo" id="correo" placeholder="Correo">
           </div>
           <div class="form-group">
             <label for="Password">Password</label>
-            <input type="password" class="form-control input-lg" name="password" placeholder="Password">
+            <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Password">
           </div>
-          
-            <label class="radio-inline">
-              <input type="radio" name="rol" id="rol1" value="1"> Quiero ser Usuario
-            </label>
-          
-          
-            <label class="radio-inline">
-              <input type="radio" name="rol" id="rol2" value="2"> Quiero ser Creador
-            </label>
-          
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="terminos" id="terminos" value="1"> Acepto Términos y Condiciones
-            </label>
+                    
+          <div class="form-group">
+              <label class="col-xs-6 control-label">Quiero registrarme como...</label>
+                  <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                          <input type="radio" name="rol" id="rol1" value="1" /> Usuario
+                      </label>
+                      <label class="btn btn-default">
+                          <input type="radio" name="rol" id="rol2" value="2" /> Creador
+                      </label>
+                  </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">REGISTRAR CUENTA</button>
-          <button type="reset" class="btn btn-primary btn-lg">Reset Datos</button>
+          <br>
+          <div class="form-group">
+          <label class="col-xs-6 control-label">Acepto Términos y Condiciones</label>
+              <div class="btn-group" data-toggle="buttons">
+                  <label class="btn btn-default">
+                      <input type="checkbox" name="terminos" id="terminos" value="1" /> Acepto
+                  </label>
+              </div>
+          </div>
+
+          <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">REGISTRAR CUENTA</button>
+          <button type="reset" class="btn btn-primary btn-lg btn-block">Reset Datos</button>
+          </div>
+
+          
+          
       <?php echo form_close() ?>
       </fieldset>
       </div>

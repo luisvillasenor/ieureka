@@ -3,13 +3,14 @@
   <div class="well">
   	<div class="row">
       <div class="col-xs-6">
-        <h1>Nueva Obra</h1>
+        <h1>Nueva Actividad</h1>
 			<fieldset>
 			<legend>Registro rápido</legend>
-			<?php echo form_open("obras/create","rol='form' class='' ") ?>
+      <?php $attributes = array('class' => '', 'id' => 'FormRegistroNuevaActividad'); 
+      echo form_open("obras/create",$attributes) ?>
 			  <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
 			  <div class="form-group">
-			    <label for="titulo">Título de la Obra</label>
+			    <label for="titulo">Título de la Actividad</label>
 			    <input type="text" class="form-control input-lg" name="titulo" placeholder="Título">
 			  </div>
 			  <div class="form-group">
@@ -50,7 +51,7 @@
 <div class="container">
   	<div class="row">
       <div class="col-xs-3">
-        <h1>Mis Obras</h1>
+        <h1>Mis Actividades</h1>
         <small>[ <?php echo $this->session->userdata('username');?> ]</small>
       </div>
       <br>
@@ -89,11 +90,11 @@
   <div class="well">
   	<div class="row">
       <div class="col-xs-3">
-      	<h4>Portada Obra [<?php echo $obra_item->id_obra; ?>]</h4>
+      	<h4>Portada de la Actividad [<?php echo $obra_item->id_obra; ?>]</h4>
         <h5><img src="..." class="img-responsive" alt="Responsive image"></h5>
       </div>
       <div class="col-xs-3">
-        <h4>Título de la obra</h4>
+        <h4>Título de la actividad</h4>
         <h5><?php echo $obra_item->titulo; ?></h5>
         <h4>Descripcion Breve</h4>
         <h5><?php echo $obra_item->descripcion; ?></h5>

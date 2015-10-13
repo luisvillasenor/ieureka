@@ -109,8 +109,17 @@ $this->index();
 				echo "TyC => ";
 				echo $terminos = $this->input->post('terminos');
 				echo "<br>";
-                //CREA USUARIO Y DEVUELVE EL ID
+
+
+                //VERIFICA QUE NO EXISTA YA EL CORREO SINO CREA USUARIO Y DEVUELVE EL ID
 				$id_user = $this->users_model->new_user($correo,$id_rol,$password,$terminos);
+				if ($id_user == 0) {
+					# code...
+					echo "EL CORREO <".$correo."> YA ESTA REGISTRADO EN EL SISTEMA"; 
+					die();
+				}
+
+
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
@@ -167,13 +176,14 @@ $this->index();
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->model('users_model');
 			$data['perfil_data'] = $this->users_model->show($id_user);
+						$this->load->model('obras_model');
+			$data['obras_data'] = $this->obras_model->show($id_user);
 			$this->load->view('header');
 			$this->load->view('navbarautor');
 			$this->load->view('users/show',$data);
 			$this->load->view('footer');
 		}
 	}	
-
 	public function notificacion_new_user($correo = 'UNO',$id_rol = 'DOS',$password = 'TRES',$terminos = 'CUATRO',$url = 'CINCO'){
 		
 		$this->load->library('email');
@@ -205,10 +215,8 @@ $this->index();
 			URL de Activacion.- '.$url.'
 			Para activar la cuenta de click en la url de activacion.
 			Despues ya podra hacer Login
-
 		');
 		$this->email->send();
-
 		//echo $this->email->print_debugger();
 	}
 

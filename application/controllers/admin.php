@@ -78,11 +78,11 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url('dashboard/'));
 						break;
-*/					case '1':
+*/					case '1': // USUARIO
 						$newdata = array(
-		                   'id_user'  => $id_user,
+		                   'id_user'   => $id_user,
 		                   'username'  => $clean_email_address,
-		                   'id_rol'       => $clean_rol,
+		                   'id_rol'    => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
@@ -90,11 +90,11 @@ class Admin extends CI_Controller {
 						$this->input->set_cookie($newdata);
 						redirect(base_url("users/show/".$id_user.""));
 						break;
-					case '2':
+					case '2': // CREADOR
 						$newdata = array(
-		                   'id_user'  => $id_user,
+		                   'id_user'   => $id_user,
 		                   'username'  => $clean_email_address,
-		                   'id_rol'       => $clean_rol,
+		                   'id_rol'    => $clean_rol,
 		                   'status'    => $isActive,
 		                   'logged_in' => TRUE
 						);
