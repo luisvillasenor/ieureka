@@ -19,6 +19,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vista General del Perfil <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo base_url("users/show/".$this->session->userdata('id_user')."");?>"><button type="button" class="btn btn-primary navbar-btn">Ver Perfil</button></a></li>
+            <li><a href="<?php echo base_url("users/changepwd/".$this->session->userdata('id_user')."");?>"><button type="button" class="btn btn-primary navbar-btn">Cambio de Clave</button></a></li>
             <li><a href="<?php echo base_url('admin/logout');?>"><button type="button" class="btn btn-default navbar-btn">Cerrar Sesion</button></a></li>
           </ul>
         </li>

@@ -84,5 +84,21 @@ class Users_model extends CI_Model{
         return $this->input->post('id_user');
     }
 
+	public function updatepwd(){
+		if ( $this->input->post('id_user') === FALSE ) {
+			# si NO hay valor en el parametro, devuelve todos los registros en forma de array
+			die();
+			//$query = $this->db->get('user');
+			//return $query->result_array();
+		}
+		# devuelve 1 registro tipo array
+			$data = array(
+	            'password' => sha1($this->input->post('confirm_password'))
+	        );
+        $this->db->where('id_user',$this->input->post('id_user'));
+        $this->db->update('users', $data);
+        return $this->input->post('id_user');
+	}
+
 
 }

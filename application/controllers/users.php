@@ -134,8 +134,9 @@ class Users extends CI_Controller {
 				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
 				//$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
 				echo "url de validacion => " . $url;
-				echo "<br>";				
-
+				echo "<br>";
+				echo "Revisa tu Email ó dale Click al siguiente link:";
+				echo "<br>";
 				$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
 
 			//}
@@ -193,6 +194,71 @@ class Users extends CI_Controller {
 			$this->load->view('footer');
 		}
 	}	
+	public function changepwd($id_user){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('users_model');
+			$data['perfil_data'] = $this->users_model->show($id_user);
+			//$this->load->model('obras_model');
+			//$data['obras_data'] = $this->obras_model->show($id_user);
+			$this->load->view('header');
+			$this->load->view('navbarautor');
+			$this->load->view('users/changepwd',$data);
+			$this->load->view('footer');
+		}
+	}
+	public function updatepwd(){
+		
+			//$data['all_userdata'] = $this->session->all_userdata();
+			$correo = $this->session->userdata('username');
+			$this->load->model('users_model');			
+			$id_user = $this->users_model->updatepwd();
+			//$this->notificacion_updatepwd($correo);
+			redirect(base_url('admin/logout'),'refresh');
+		
+	}	
+
+	public function notificacion_updatepwd($correo = 'UNO'){
+		
+		$this->load->library('email');
+
+		$config['useragent'] = 'CodeIgniter';
+		$config['protocol'] = 'smtp';
+		//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_host'] = 'ssl://xclf-hbvx.accessdomain.com';
+		$config['smtp_port'] = '465';
+		$config['smtp_timeout'] = '5';
+		$config['wordwrap'] = TRUE;
+		$config['wrapchars'] = '76';
+		$config['smtp_user'] = 'luis@iceberg9.com';
+		$config['smtp_pass'] = 'LGVa6773@01';
+		$config['charset'] = 'utf-8';
+		$config['newline'] = "\r\n";
+		$config['mailtype'] = 'text';// or html
+		$config['validate'] = TRUE;
+		$config['priority'] = '3';
+		$config['crlf'] = "\r\n";
+
+		$this->email->initialize($config);
+
+		$this->email->from('no-responder@ieureka.com','iEureka -- Cambio de Password');
+		$this->email->to($correo);
+		$this->email->subject('Cambio de Password');
+		$this->email->message('
+			Cambio de Password iEureka EXITOSO!
+			
+			Ingrese nuevamente a iEureka con la nueva clave de acceso
+			
+			Nota: Favor de no responder a este correo ya que es un correo no supervisado.
+		');
+		$this->email->send();
+		//echo $this->email->print_debugger();
+	}
 	public function notificacion_new_user($correo = 'UNO',$id_rol = 'DOS',$password = 'TRES',$terminos = 'CUATRO',$url = 'CINCO'){
 		
 		$this->load->library('email');

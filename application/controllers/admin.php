@@ -143,10 +143,14 @@ class Admin extends CI_Controller {
 	}
 
 	public function logout(){
-		$ci_session = $this->session->userdata('session_id');
-		if (empty($ci_session) === FALSE)
+		$this->load->helper('cookie');
+		$ci_sessions = $this->session->userdata('session_id');
+		
+		if (empty($ci_sessions) === FALSE)
 		{
-			$this->session->sess_destroy($ci_session);
+			$this->session->sess_destroy($ci_sessions);
+			delete_cookie('ci_session');
+			
 		}
 		redirect(base_url());
 	}

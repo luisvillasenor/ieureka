@@ -152,4 +152,45 @@ $('#FormRegistroEditarQuick').bootstrapValidator({
 });
 
 
+
+		$('#enableForm').bootstrapValidator({
+	 message: 'Este valor no es valido',
+	 feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                full_name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The full name is required and cannot be empty'
+                        }
+                    }
+                },
+                password: {
+                    enabled: true,
+                    validators: {
+                        notEmpty: {
+                            message: 'El password es requerido y no puede estar vacio'
+                        }
+                    }
+                },
+                confirm_password: {
+                    enabled: true,
+                    validators: {
+                        notEmpty: {
+                            message: 'El password de confirmación es requerido y no puede estar vacio'
+                        },
+                        identical: {
+                            field: 'password',
+                            message: 'El password y la confirmación deben ser identicos'
+                        }
+                    }
+                }
+            }
+        });
+
+
+
 });
