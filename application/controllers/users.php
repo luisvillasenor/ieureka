@@ -60,14 +60,17 @@ class Users extends CI_Controller {
 					echo "<br>";
 					echo "YA PUEDE HACER LOGIN AL SISTEMA";
 					//$this->index();
+					echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
 
 					$this->activacion_model->borrar_token($id_activacion);
-					redirect(base_url('users/login'),'refresh');
-//header("Location: http://dev.iceberg9.com/ieureka/");
+					//redirect(base_url('users/login'),'refresh');
+					//header("Location: http://dev.iceberg9.com/ieureka/");
 				}
 			}else{
 				echo "ERROR, CONTACTE AL ADMINISTRADOR";
-$this->index();
+				//$this->index();
+				echo '<br>';
+				echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
 			}
 		}
 	}
@@ -97,28 +100,31 @@ $this->index();
 			//EN CASO CONTRARIO PROCESAMOS LOS DATOS
 			//echo $nombre = $this->input->post('nom');
 
-/*			
+			
 				echo "Correo => ";
 				echo $correo = $this->input->post('correo');
 				echo "<br>";
 				echo "Rol => ";
 				echo $id_rol = $this->input->post('rol');
-				echo "<br>";
-				echo "Password => ";
-				echo $password = $this->input->post('password');
+				
+				$password = $this->input->post('password');
 				echo "<br>";
 				echo "TyC => ";
 				echo $terminos = $this->input->post('terminos');
 				echo "<br>";
-*/
+
 
                 //VERIFICA QUE NO EXISTA YA EL CORREO SINO CREA USUARIO Y DEVUELVE EL ID
 				$id_user = $this->users_model->new_user($correo,$id_rol,$password,$terminos);
 				if ($id_user == 0) {
 					# code...
-					echo "EL CORREO <".$correo."> YA ESTA REGISTRADO EN EL SISTEMA"; 
+					echo "EL CORREO <".$correo."> YA ESTA REGISTRADO EN EL SISTEMA";
+					echo '<br>';
+					echo 'PUEDE HACER LOGIN EN EL SIGUIENTE ENLACE:  ';
+					echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
+					//header("Location: http://dev.iceberg9.com/ieureka/");
 					die();
-					redirect(base_url('users/login'),'refresh');
+					//redirect(base_url('users/login'),'refresh');
 				}
 
 
@@ -127,14 +133,14 @@ $this->index();
 				//ENVIA MAIL CON URL DE ACTIVACION 
 				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
 				//$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
-				//echo "url de validacion => " . $url;
-				//echo "<br>";				
+				echo "url de validacion => " . $url;
+				echo "<br>";				
 
 				$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
 
 			//}
 			
-			//echo anchor($url, $url, 'class="link-class"');
+			echo anchor($url, $url, 'class="link-class"');
 
 		}
 		die;
@@ -193,13 +199,14 @@ $this->index();
 
 		$config['useragent'] = 'CodeIgniter';
 		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_host'] = 'ssl://xclf-hbvx.accessdomain.com';
 		$config['smtp_port'] = '465';
 		$config['smtp_timeout'] = '5';
 		$config['wordwrap'] = TRUE;
 		$config['wrapchars'] = '76';
-		$config['smtp_user'] = 'sectureags@gmail.com';
-		$config['smtp_pass'] = 'sECTUREd1';
+		$config['smtp_user'] = 'luis@iceberg9.com';
+		$config['smtp_pass'] = 'LGVa6773@01';
 		$config['charset'] = 'utf-8';
 		$config['newline'] = "\r\n";
 		$config['mailtype'] = 'text';// or html
@@ -218,6 +225,8 @@ $this->index();
 			URL de Activacion.- '.$url.'
 			Para activar la cuenta dé click en la url de activacion.
 			Despues ya podra hacer Login
+
+			Nota: Favor de no responder a este correo ya que es un correo no supervisado.
 		');
 		$this->email->send();
 		//echo $this->email->print_debugger();

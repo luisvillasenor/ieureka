@@ -135,7 +135,8 @@ class Admin extends CI_Controller {
 				echo 'Por favor solicite ayuda al administrador del sitio';
 				echo '</p>';
 				echo '</div>';
-				redirect(base_url('admin/logout'),'refresh');
+				//redirect(base_url('admin/logout'),'refresh');
+				//header("Location: http://dev.iceberg9.com/ieureka/");
 				}
 		}
 		//redirect(base_url('admin/logout'));
