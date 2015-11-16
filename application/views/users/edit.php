@@ -53,12 +53,13 @@
         <div class="form-group has-warning">
           <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control input-lg" name="telefono" placeholder="Teléfono" value="<?php echo $ob_item->telefono;?>">
+            <input type="telephone" class="form-control input-lg" name="telefono" placeholder="Teléfono" value="<?php echo $ob_item->telefono;?>">
           </div>
         </div>        
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-primary">Actualizar Datos del Perfil</button>
+            
           </div>
         </div>
 <?php } ?>  

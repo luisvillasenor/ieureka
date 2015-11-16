@@ -96,7 +96,8 @@ $this->index();
 			//}else{
 			//EN CASO CONTRARIO PROCESAMOS LOS DATOS
 			//echo $nombre = $this->input->post('nom');
-			
+
+/*			
 				echo "Correo => ";
 				echo $correo = $this->input->post('correo');
 				echo "<br>";
@@ -109,7 +110,7 @@ $this->index();
 				echo "TyC => ";
 				echo $terminos = $this->input->post('terminos');
 				echo "<br>";
-
+*/
 
                 //VERIFICA QUE NO EXISTA YA EL CORREO SINO CREA USUARIO Y DEVUELVE EL ID
 				$id_user = $this->users_model->new_user($correo,$id_rol,$password,$terminos);
@@ -117,6 +118,7 @@ $this->index();
 					# code...
 					echo "EL CORREO <".$correo."> YA ESTA REGISTRADO EN EL SISTEMA"; 
 					die();
+					redirect(base_url('users/login'),'refresh');
 				}
 
 
@@ -126,12 +128,13 @@ $this->index();
 				$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
 				//$url = "http://localhost/ieureka/users/activacion_cuenta/" . $randkey;
 				//echo "url de validacion => " . $url;
-				echo "<br>";				
+				//echo "<br>";				
 
 				$this->notificacion_new_user($correo,$id_rol,$password,$terminos,$url);
 
 			//}
-			echo anchor($url, $url, 'class="link-class"');
+			
+			//echo anchor($url, $url, 'class="link-class"');
 
 		}
 		die;
@@ -206,14 +209,14 @@ $this->index();
 
 		$this->email->initialize($config);
 
-		$this->email->from('no-responder@ejemplo.com','iEureka System');
+		$this->email->from('no-responder@ieureka.com','iEureka -- Activacion de Nueva Cuenta');
 		$this->email->to($correo);
-		$this->email->subject('Activacion de su Cuenta');
+		$this->email->subject('Activacion de Cuenta');
 		$this->email->message('
 			Activacion de Cuenta iEureka
 			Correo Registrado.- '.$correo.'
 			URL de Activacion.- '.$url.'
-			Para activar la cuenta de click en la url de activacion.
+			Para activar la cuenta dé click en la url de activacion.
 			Despues ya podra hacer Login
 		');
 		$this->email->send();

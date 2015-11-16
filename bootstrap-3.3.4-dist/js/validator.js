@@ -29,7 +29,10 @@ $('#FormRegistrarNuevaCuenta').bootstrapValidator({
 			 validators: {
 				 notEmpty: {
 					 message: 'Campo requerido'
-				 }
+				 },
+				 emailAddress: {
+                            message: 'The value is not a valid email address'
+                        }
 			 }
 		 },
 		 password: {
@@ -68,7 +71,10 @@ $('#FormAcceso').bootstrapValidator({
 			 validators: {
 				 notEmpty: {
 					 message: 'Campo requerido'
-				 }
+				 },
+				 emailAddress: {
+                    message: 'El valor no es una direccion de email valida'
+                 }
 			 }
 		 },
 		 password: {
