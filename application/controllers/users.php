@@ -156,7 +156,13 @@ class Users extends CI_Controller {
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->model('users_model');
+			$this->load->model('paises_model');
+			$this->load->model('estados_model');
+			$this->load->model('municipios_model');
 			$data['perfil_data'] = $this->users_model->show($id_user);
+			$data['paises'] = $this->paises_model->get_all();
+			$data['estados'] = $this->estados_model->get_all();
+			$data['municipios'] = $this->municipios_model->get_all();
 			$this->load->view('header');
 			$this->load->view('navbarautor');
 			$this->load->view('users/edit',$data);

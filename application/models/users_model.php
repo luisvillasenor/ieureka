@@ -71,11 +71,11 @@ class Users_model extends CI_Model{
 	{
        $data = array(
             'nombreCompleto' => $this->input->post('nombreCompleto'),
-            'pais' => $this->input->post('pais'),
+            'idpais' => $this->input->post('pais'),
             'domicilio1' => $this->input->post('domicilio1'),
             'domicilio2' => $this->input->post('domicilio2'),
-            'ciudad' => $this->input->post('ciudad'),
-            'estado' => $this->input->post('estado'),
+            'idestado' => $this->input->post('estado'),
+            'idmunicipio' => $this->input->post('municipio'),
             'cp' => $this->input->post('cp'),
             'telefono' => $this->input->post('telefono')
         );
