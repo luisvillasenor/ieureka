@@ -65,12 +65,103 @@
             <input type="text" class="form-control input-lg" name="cp" placeholder="Código postal" value="<?php echo $ob_item->cp;?>">
           </div>
         </div>
+
         <div class="form-group has-warning">
           <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
           <div class="col-sm-10">
             <input type="telephone" class="form-control input-lg" name="telefono" placeholder="Teléfono" value="<?php echo $ob_item->telefono;?>">
           </div>
         </div>        
+
+
+        <div class="form-group has-warning">
+          <label for="telefono" class="col-sm-2 control-label">Ocupación</label>
+          <div class="col-sm-10">
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Maestro
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesionista
+            </label>
+          </div>
+        </div>        
+        <hr>
+        <div class="form-group has-warning">
+          <label for="telefono" class="col-sm-2 control-label">Grado</label>
+          <div class="col-sm-10">
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Primaria
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Secundaria
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option3"> Preparatoria
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option4"> Nivel Superior
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option5"> Posgrado
+            </label>
+          </div>
+        </div>        
+<hr>
+
+        <div class="form-group has-warning">
+          <label for="telefono" class="col-sm-2 control-label">Institución</label>
+          <div class="col-sm-10">
+            <input type="telephone" class="form-control input-lg" name="institucion" placeholder="Institución" value="">
+          </div>
+        </div>        
+<hr>
+
+        <div class="form-group has-warning">
+          <label for="telefono" class="col-sm-2 control-label">Especialidad</label>
+          <div class="col-sm-10">
+            <input type="telephone" class="form-control input-lg" name="especialidad" placeholder="Especialidad" value="">
+          </div>
+        </div>        
+
+        <hr>
+        <div class="form-group has-warning">
+          <label for="telefono" class="col-sm-2 control-label">Areas de Enseñanza</label>
+          <div class="col-sm-10">
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Matemáticas
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Español
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option3"> Etica
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option4"> Civismo
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option5"> Quimica
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option6"> Fisica
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option7"> Historia
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option8"> Artes
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option9"> Educación Fisica
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option10"> Geografía
+            </label>
+          </div>
+        </div>        
+
+
+
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-primary">Actualizar Datos del Perfil</button>

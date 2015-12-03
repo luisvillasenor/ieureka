@@ -7,7 +7,7 @@
 			<fieldset>
 			<legend>Registro rápido</legend>
       <?php $attributes = array('class' => '', 'id' => 'FormRegistroNuevaActividad'); 
-      echo form_open("obras/create",$attributes) ?>
+      echo form_open("obras/create_quick",$attributes) ?>
 			  <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
 			  <div class="form-group">
 			    <label for="titulo">Título de la Actividad</label>
@@ -17,11 +17,7 @@
 			    <label for="descripcion">Descripción breve</label>
 			    <textarea type="text" class="form-control input-lg" rows="6" name="descripcion" placeholder="Descripción"></textarea>
 			  </div>
-			  <div class="checkbox">
-			    <label>
-			      <input type="checkbox" name="borrador"> Borrador
-			    </label>
-			  </div>
+
 			  <button type="submit" class="btn btn-warning">Guardar</button>
 			<?php echo form_close() ?>
 			</fieldset>
@@ -41,6 +37,12 @@
         	<li>
            Registra tus borradores para despues terminar de configurar su publicación 
           </li>
+          <li>
+            Por default el registro rápido se da de alta con carácter de Borrador.
+          </li>
+          <br>
+            <a type="button" class="btn btn-primary" href="<?php echo base_url("obras/nuevo");?>">Registro Completo</a>
+          
         </ul>
       </div>
   	</div>
@@ -61,9 +63,11 @@
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <form class="navbar-form navbar-left" role="search">
+          <?php $attributes = array('class' => 'navbar-form navbar-left', 'id' => 'FormBuscarTitulo'); 
+          echo form_open("obras/buscartitulo",$attributes) ?>
 		        <div class="form-group">
-		          <input type="text" class="form-control input-lg" placeholder="Títulos">
+              <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
+		          <input type="text" name="titulo" id="titulo" class="form-control input-lg" placeholder="Títulos">
 		        </div>
 		        <button type="submit" class="btn btn-default">Buscar</button>
 		      </form>
@@ -71,9 +75,8 @@
 		        <li class="dropdown">          
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtros por: <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">Estado</a></li>
-		            <li><a href="#">Colaborador</a></li>
-		            <li><a href="#">ISBN</a></li>
+		            <li><a href="#">Categoria</a></li>
+		            <li><a href="#">Sub Categoria</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -90,27 +93,21 @@
   <div class="well">
   	<div class="row">
       <div class="col-xs-3">
-      	<h4>Portada de la Actividad [<?php echo $obra_item->id_obra; ?>]</h4>
-        <h5><img src="..." class="img-responsive" alt="Responsive image"></h5>
-      </div>
-      <div class="col-xs-3">
-        <h4>Título de la actividad</h4>
+        <h2>Título de la actividad</h2>
         <h5><?php echo $obra_item->titulo; ?></h5>
-        <h4>Descripcion Breve</h4>
+        <h2>Descripcion Breve</h2>
         <h5><?php echo $obra_item->descripcion; ?></h5>
       </div>
-      <div class="col-xs-3">
-        <h4>Estado:</h4>
+      <div class="col-xs-4">
+        <h2>Estado:</h2>
         <h5><?php echo $obra_item->borrador; ?></h5>
-        <h4>Fecha de Alta</h4>
+        <h2>Fecha de Alta</h2>
         <h5><?php echo $obra_item->fecha_alta; ?></h5>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-4">
         <!-- Indicates caution should be taken with this action -->
-        <a type="button" class="btn btn-primary btn-block" href="<?php echo base_url("obras/edit/".$obra_item->id_obra."/".$obra_item->id_user."");?>">Actualizacion Rapida</a>
-		<button type="button" class="btn btn-warning btn-block">Actualizar Detalles</button>
-		<span id="helpBlock" class="help-block">Asigne una portada, suba su archivo, categorice para facilitar su busqueda, etc...</span>
-
+        <a type="button" class="btn btn-primary btn-block" href="<?php echo base_url("obras/edit/".$obra_item->id_obra."/".$obra_item->id_user."");?>">Actualizar Actividad</a>
+		    <span id="helpBlock" class="help-block">Asigne una portada, suba su archivo, categorice para facilitar su busqueda, etc...</span>
       </div>
   	</div>
   </div>

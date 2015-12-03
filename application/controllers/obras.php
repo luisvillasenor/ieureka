@@ -9,7 +9,29 @@ class Obras extends CI_Controller {
 		$this->load->model('obras_model');
 	}
 
-	public function create(){
+	public function nuevo(){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['all_userdata'] = $this->session->all_userdata();
+			//$id_user = $this->session->userdata('id_user');
+			$this->load->model('categorias_model');
+			$this->load->model('subcategorias_model');
+
+			$data['categorias'] = $this->categorias_model->get_all();
+			$data['subcategorias'] = $this->subcategorias_model->get_all();
+
+			$this->load->view('header');
+			$this->load->view('navbarautor');
+			$this->load->view('obras/nuevo',$data);
+			$this->load->view('footer');
+		}
+	}
+
+	public function create_quick(){
 		$ci_session = $this->input->cookie('ci_session');
 		if (empty($ci_session)===TRUE){
 			redirect(base_url('admin/logout'));
@@ -18,11 +40,27 @@ class Obras extends CI_Controller {
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->model('obras_model');			
+			$id_obra = $this->obras_model->create_quick();
+			$id_user = $this->session->userdata('id_user');
+			redirect(base_url("obras/show/".$id_user.""));
+		}
+	}
+
+	public function create(){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			//$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('obras_model');			
 			$id_obra = $this->obras_model->create();
 			$id_user = $this->session->userdata('id_user');
 			redirect(base_url("obras/show/".$id_user.""));
 		}
 	}
+
 	public function show($id_user){
 		$ci_session = $this->input->cookie('ci_session');
 		if (empty($ci_session)===TRUE){
@@ -40,6 +78,26 @@ class Obras extends CI_Controller {
 		}
 	}	
 
+	public function buscartitulo(){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$id_user = $this->input->post('id_user');
+			$titulo  = $this->input->post('titulo');
+
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('obras_model');
+			$data['obras_data'] = $this->obras_model->buscartitulo($titulo, $id_user);
+			$this->load->view('header');
+			$this->load->view('navbarautor');
+			$this->load->view('obras/show',$data);
+			$this->load->view('footer');
+		}
+	}	
+
 	public function edit($id_obra,$id_user){
 		$ci_session = $this->input->cookie('ci_session');
 		if (empty($ci_session)===TRUE){
@@ -49,8 +107,15 @@ class Obras extends CI_Controller {
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->model('obras_model');
+			$this->load->model('categorias_model');
+			$this->load->model('subcategorias_model');
+
 			$data['obras_data'] = $this->obras_model->show($id_user);
 			$data['obra_data'] = $this->obras_model->edit($id_obra);
+
+			$data['categorias'] = $this->categorias_model->get_all();
+			$data['subcategorias'] = $this->subcategorias_model->get_all();
+
 			$this->load->view('header');
 			$this->load->view('navbarautor');
 			$this->load->view('obras/edit',$data);

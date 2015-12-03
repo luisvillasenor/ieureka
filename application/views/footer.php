@@ -73,35 +73,37 @@ $("#menu-toggle").click(function(e) {
  </script>
 
 <script language="javascript">
+
+
   
   function ComponerListaPaises(idPais){
-    document.forms.EditViewPerfil.pais.disable = true;
-    document.forms.EditViewPerfil.estado.length = 0;
-    document.forms.EditViewPerfil.municipio.length = 0;
+    document.forms.FormRegistroNuevaActividad.pais.disable = true;
+    document.forms.FormRegistroNuevaActividad.estado.length = 0;
+    document.forms.FormRegistroNuevaActividad.municipio.length = 0;
     CargarEstadosEnlazados(idPais);
-    document.form.EditViewPerfil.pais.disable = false;
+    document.form.FormRegistroNuevaActividad.pais.disable = false;
   }
 
   function CargarEstadosEnlazados(idPais){
     var obj
-    document.forms.EditViewPerfil.estado.disable = true;
+    document.forms.FormRegistroNuevaActividad.estado.disable = true;
     <?php foreach ($estados as $item) { ?>
       if (idPais == <?php echo $item->idpais;?>) {
         obj = document.createElement("option");
         obj.text = '<?php echo $item->estado;?>';
         obj.value = '<?php echo $item->idestado;?>';
         
-        document.forms.EditViewPerfil.estado.options.add(obj);
+        document.forms.FormRegistroNuevaActividad.estado.options.add(obj);
       }      
     <?php } ?>
-    document.forms.EditViewPerfil.estado.disable = false;
+    document.forms.FormRegistroNuevaActividad.estado.disable = false;
   }
 
-  function ComponerListaEstados(idEstado){
-    document.forms.EditViewPerfil.estado.disable = true;
-    document.forms.EditViewPerfil.municipio.length = 0;
+  function FormRegistroNuevaActividad(idEstado){
+    document.forms.FormRegistroNuevaActividad.estado.disable = true;
+    document.forms.FormRegistroNuevaActividad.municipio.length = 0;
     CargarMunicipiosEnlazados(idEstado);
-    document.forms.EditViewPerfil.estado.disable = false;
+    document.forms.FormRegistroNuevaActividad.estado.disable = false;
   }
 
   function CargarMunicipiosEnlazados(idEstado){

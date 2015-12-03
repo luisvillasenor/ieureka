@@ -109,6 +109,27 @@ $('#FormRegistroNuevaActividad').bootstrapValidator({
 				 }
 			 }
 		 },
+		 derechos: {
+			 validators: {
+				 notEmpty: {
+					 message: 'campo requerido'
+				 }
+			 }
+		 },
+		 palabras: {
+			 validators: {
+				 notEmpty: {
+					 message: 'campo requerido'
+				 }
+			 }
+		 },
+		 precio: {
+			 validators: {
+				 notEmpty: {
+					 message: 'campo requerido'
+				 }
+			 }
+		 },
 		 borrador: {
 			 validators: {
 				 notEmpty: {
@@ -135,6 +156,27 @@ $('#FormRegistroEditarQuick').bootstrapValidator({
 			 }
 		 },
 		 descripcion: {
+			 validators: {
+				 notEmpty: {
+					 message: 'campo requerido'
+				 }
+			 }
+		 },
+		 derechos: {
+			 validators: {
+				 notEmpty: {
+					 message: 'campo requerido'
+				 }
+			 }
+		 },
+		 palabras: {
+			 validators: {
+				 notEmpty: {
+					 message: 'campo requerido'
+				 }
+			 }
+		 },
+		 precio: {
 			 validators: {
 				 notEmpty: {
 					 message: 'campo requerido'
