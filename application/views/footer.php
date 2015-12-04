@@ -116,6 +116,18 @@ $("#menu-toggle").click(function(e) {
 
 </script>
 
+<script type="text/javascript">
+  function checkTransType(selectedType){
+  if (selectedType == 'maestro'){
+    document.getElementById('driveDiv').style.display = 'block';
+    document.getElementById('publicDiv').style.display = 'none';
+  } else{
+    document.getElementById('driveDiv').style.display = 'none';
+    document.getElementById('publicDiv').style.display = 'block';
+  }
+}
+</script>
+
 
 <script language="javascript">
 

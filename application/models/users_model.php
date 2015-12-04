@@ -77,7 +77,12 @@ class Users_model extends CI_Model{
             'idestado' => $this->input->post('estado'),
             'idmunicipio' => $this->input->post('municipio'),
             'cp' => $this->input->post('cp'),
-            'telefono' => $this->input->post('telefono')
+            'telefono' => $this->input->post('telefono'),
+            'ocupacion' => $this->input->post('ocupacion'),
+            'grado' => $this->input->post('grado'),
+            'institucion' => $this->input->post('institucion'),
+            'especialidad' => $this->input->post('especialidad'),
+            'areaensenanza' => $this->input->post('areaensenanza')
         );
         $this->db->where('id_user',$this->input->post('id_user'));
         $this->db->update('users', $data);

@@ -74,88 +74,84 @@
         </div>        
 
 
-        <div class="form-group has-warning">
-          <label for="telefono" class="col-sm-2 control-label">Ocupación</label>
-          <div class="col-sm-10">
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Maestro
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesionista
-            </label>
-          </div>
-        </div>        
-        <hr>
-        <div class="form-group has-warning">
-          <label for="telefono" class="col-sm-2 control-label">Grado</label>
-          <div class="col-sm-10">
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Primaria
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Secundaria
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option3"> Preparatoria
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option4"> Nivel Superior
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option5"> Posgrado
-            </label>
-          </div>
-        </div>        
-<hr>
 
         <div class="form-group has-warning">
-          <label for="telefono" class="col-sm-2 control-label">Institución</label>
+          <label for="ocupacion" class="col-sm-2 control-label">Ocupación</label>
           <div class="col-sm-10">
-            <input type="telephone" class="form-control input-lg" name="institucion" placeholder="Institución" value="">
+            <label class="radio-inline">
+              <input type="radio" name="ocupacion" id="ocupacion" value="maestro" onclick="checkTransType(this.value)"> Maestro
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="ocupacion" id="ocupacion" value="profesionista" onclick="checkTransType(this.value)"> Profesionista
+            </label>
           </div>
         </div>        
-<hr>
-
-        <div class="form-group has-warning">
-          <label for="telefono" class="col-sm-2 control-label">Especialidad</label>
+        
+        <div id="driveDiv" class="form-group has-warning" style="display:none">
+          <label for="grado" class="col-sm-2 control-label">Grado</label>
           <div class="col-sm-10">
-            <input type="telephone" class="form-control input-lg" name="especialidad" placeholder="Especialidad" value="">
+            <label class="radio-inline">
+              <input type="radio" name="grado" id="grado" value="primaria"> Primaria
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="grado" id="grado" value="secundaria"> Secundaria
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="grado" id="grado" value="preparatoria"> Preparatoria
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="grado" id="grado" value="nivelsuperior"> Nivel Superior
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="grado" id="grado" value="posgrado"> Posgrado
+            </label>
           </div>
         </div>        
 
-        <hr>
+        <div id="publicDiv" class="form-group has-warning" style="display:none">
+          <label for="institucion" class="col-sm-2 control-label">Institución</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control input-lg" name="institucion" placeholder="Institución" value="">
+          </div>
+          <label for="especialidad" class="col-sm-2 control-label">Especialidad</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control input-lg" name="especialidad" placeholder="Especialidad" value="">
+          </div>
+        </div>        
+
+
         <div class="form-group has-warning">
-          <label for="telefono" class="col-sm-2 control-label">Areas de Enseñanza</label>
+          <label for="areaensenanza" class="col-sm-2 control-label">Areas de Enseñanza</label>
           <div class="col-sm-10">
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Matemáticas
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="matematicas"> Matemáticas
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Español
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="espanol"> Español
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option3"> Etica
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="etica"> Etica
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option4"> Civismo
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="civismo"> Civismo
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option5"> Quimica
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="quimica"> Quimica
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option6"> Fisica
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="fisica"> Fisica
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option7"> Historia
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="historia"> Historia
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option8"> Artes
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="artes"> Artes
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option9"> Educación Fisica
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="educacionfisica"> Educación Fisica
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option10"> Geografía
+              <input type="checkbox" name="areaensenanza" id="areaensenanza" value="geografia"> Geografía
             </label>
           </div>
         </div>        
