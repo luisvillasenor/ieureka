@@ -17,22 +17,24 @@
 			    <label for="descripcion">Descripción breve</label>
 			    <textarea type="text" class="form-control input-lg" rows="6" name="descripcion" placeholder="Descripción"></textarea>
 			  </div>
+
         <div class="form-group">
-          <label for="categoria">Categoría</label>
-            <select class="form-control input-lg" name="categoria" id="categoria" placeholder="Categoria" title="Categoría">
-              <?php foreach ($categorias as $item) { ?>
-                <option value="<?php echo $item->id;?>"><?php echo $item->categoria;?></option> 
-              <?php } ?>
-            </select>
-        </div>
-        <div class="form-group">
-          <label for="subcategoria">Sub categoria</label>
-            <select class="form-control input-lg" name="subcategoria" id="subcategoria" placeholder="subcategoria" title="subcategoria">
-              <?php foreach ($subcategorias as $subitem) { ?>
-                <option value="<?php echo $subitem->id;?>"><?php echo $subitem->subcategoria;?></option> 
-              <?php } ?>            
+          <label for="Categoria">Categoria</label>
+            <select class="form-control input-lg" name="categoria" id="categoria" onchange="slctryole(this,this.form.subcategoria)">
+                <option>- - Seleccionar - -</option> 
+                <option value="ciencias_sociales">Ciencias Sociales</option> 
+                <option value="ciencias_exactas">Ciencias exactas</option> 
             </select>            
         </div>
+        <div class="form-group">
+          <label for="Subcategoria">Sub Categoria</label>
+            <select class="form-control input-lg" name="subcategoria" id="subcategoria" onchange="slctryole(this,this.form.select3)">
+                <option>- - Seleccionar - - -</option> 
+            </select>            
+        </div>
+
+
+
         <div class="form-group">
           <label for="derechos">Derechos</label>
           <input type="text" class="form-control input-lg" name="derechos" placeholder="Derechos de la obra">
@@ -48,16 +50,6 @@
         <div class="form-group">
           <label for="lanzamiento">Status de Publicacion</label>
           <input type="text" class="form-control input-lg" name="lanzamiento" placeholder="lanzamiento" readonly>
-        </div>
-        <div class="form-group">
-          <label for="portada">Portada</label>
-          <input type="file" id="portada" name="portada">
-          <p class="help-block">Agregue una portada {png, jpeg}</p>
-        </div>
-        <div class="form-group">
-          <label for="archivo">Actividad digital</label>
-          <input type="file" id="archivo" name="archivo">
-          <p class="help-block">Agregue su archivo {pdf, doc, xls}</p>
         </div>
 
 			  <button type="submit" class="btn btn-warning">Guardar</button>

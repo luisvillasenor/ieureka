@@ -72,6 +72,51 @@ $("#menu-toggle").click(function(e) {
 
  </script>
 
+
+<!-- Catalogos Enlazados -->
+<script type="text/javascript">
+  
+  function slctr(texto,valor){
+    this.texto = texto
+    this.valor = valor
+  }
+
+  //******Hijos*****************
+  var ciencias_sociales = new Array()
+      ciencias_sociales[0] = new slctr("- - Ciencias Sociales - -")
+      ciencias_sociales[1] = new slctr("Historia",'historia')
+      ciencias_sociales[2] = new slctr("Pintura",'pintura')
+      ciencias_sociales[3] = new slctr("Cine",'cine')
+      ciencias_sociales[4] = new slctr("Política",'politica')
+      ciencias_sociales[5] = new slctr("Debate",'debate')
+
+  var ciencias_exactas = new Array()
+      ciencias_exactas[0] = new slctr("- - Ciencias Exactas - -")
+      ciencias_exactas[1] = new slctr("Matemáticas",'matematicas')
+      ciencias_exactas[2] = new slctr("Programación",'programacion')
+      ciencias_exactas[3] = new slctr("Ingeniería",'ingenieria')
+      ciencias_exactas[4] = new slctr("Física",'fisica')
+      ciencias_exactas[5] = new slctr("Química",'quimica')
+  
+  function slctryole(cual,donde){
+    if (cual.selectedIndex != 0) {
+        donde.length=0
+        cual = eval(cual.value)
+        for (m = 0; m < cual.length; m++) {
+          var nuevaOpcion = new Option(cual[m].texto);
+          donde.options[m] = nuevaOpcion;
+          if (cual[m].valor != null) {
+            donde.options[m].value = cual[m].valor
+          } else{
+            donde.options[m].value = cual[m].texto
+          }
+        }
+    }
+  }
+
+</script>
+
+
 <script language="javascript">
 
 

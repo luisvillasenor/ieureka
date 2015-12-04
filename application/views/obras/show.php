@@ -72,13 +72,21 @@
 		        <button type="submit" class="btn btn-default">Buscar</button>
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
-		        <li class="dropdown">          
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtros por: <span class="caret"></span></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="#">Categoria</a></li>
-		            <li><a href="#">Sub Categoria</a></li>
-		          </ul>
-		        </li>
+          <?php $attributes = array('class' => 'navbar-form navbar-left', 'id' => 'FormPorFiltro'); 
+          echo form_open("obras/porFiltro",$attributes) ?>
+            <input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
+            <select class="form-control input-lg" name="categoria" id="categoria" onchange="slctryole(this,this.form.subcategoria)">
+                <option>- - Seleccionar - -</option> 
+                <option value="ciencias_sociales">Ciencias Sociales</option> 
+                <option value="ciencias_exactas">Ciencias exactas</option> 
+            </select>            
+
+            <select class="form-control input-lg" name="subcategoria" id="subcategoria" onchange="this.form.submit()">
+                <option>- - - - -</option> 
+            </select>            
+          </form>
+
+
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -106,8 +114,20 @@
       </div>
       <div class="col-xs-4">
         <!-- Indicates caution should be taken with this action -->
-        <a type="button" class="btn btn-primary btn-block" href="<?php echo base_url("obras/edit/".$obra_item->id_obra."/".$obra_item->id_user."");?>">Actualizar Actividad</a>
+        <a type="button" class="btn btn-warning btn-block" href="<?php echo base_url("obras/edit/".$obra_item->id_obra."/".$obra_item->id_user."");?>">Editar Actividad</a>
 		    <span id="helpBlock" class="help-block">Asigne una portada, suba su archivo, categorice para facilitar su busqueda, etc...</span>
+        <!-- Indicates caution should be taken with this action -->
+        
+        <?php $attributes = array('class' => '', 'id' => 'FormRegistroEditarQuick'); 
+        echo form_open("#",$attributes) ?>
+          <div class="form-group">
+          <img src="<?php echo base_url('Amarillo-180x180.png');?>" alt="imagen de portada" class="img-thumbnail">
+            <input type="file" class="btn btn-default" name="portada" size="20">
+            <a type="button" class="btn btn-info btn-block" onclick="this.form.submit()">Cambiar Portada</a>
+          </div>
+        </form>
+        
+
       </div>
   	</div>
   </div>

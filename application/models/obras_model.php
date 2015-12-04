@@ -35,6 +35,21 @@ class Obras_model extends CI_Model{
         return $query->result();
     }
 
+    public function porFiltro($categoria = FALSE, $subcategoria = FALSE, $id_user){
+        
+        if ( $categoria == FALSE AND $subcategoria == FALSE ) {
+            # si NO hay valor en el parametro, devuelve todos los registros en forma de array
+            $this->show($id_user);            
+        }
+        # devuelve registros tipo objeto
+        $this->db->where('id_user', $id_user);
+        $this->db->where('categoria', $categoria);
+        $this->db->where('categoria', $categoria);
+        $query = $this->db->get('obras');
+        //return $query->row_array();
+        return $query->result();
+    }
+
     public function quick_update()
     {
        $data = array(            
@@ -47,7 +62,7 @@ class Obras_model extends CI_Model{
         return $id_user;
     }
 
-    public function update($id_obra)
+    public function update()
     {
        $data = array(
             'id_user' => $this->input->post('id_user'),
@@ -66,7 +81,8 @@ class Obras_model extends CI_Model{
         );
         $this->db->where('id_obra',$this->input->post('id_obra'));
         $this->db->update('obras', $data);
-        return $id_obra;
+        $id_user = $this->session->userdata('id_user');
+        return $id_user;
     }
 
 	public function create_quick()

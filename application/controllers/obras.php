@@ -98,6 +98,27 @@ class Obras extends CI_Controller {
 		}
 	}	
 
+	public function porFiltro(){
+		$ci_session = $this->input->cookie('ci_session');
+		if (empty($ci_session)===TRUE){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$id_user = $this->input->post('id_user');
+			$categoria  = $this->input->post('categoria');
+			$subcategoria  = $this->input->post('subcategoria');
+
+			$data['all_userdata'] = $this->session->all_userdata();
+			$this->load->model('obras_model');
+			$data['obras_data'] = $this->obras_model->porFiltro($categoria, $subcategoria,$id_user);
+			$this->load->view('header');
+			$this->load->view('navbarautor');
+			$this->load->view('obras/show',$data);
+			$this->load->view('footer');
+		}
+	}	
+
 	public function edit($id_obra,$id_user){
 		$ci_session = $this->input->cookie('ci_session');
 		if (empty($ci_session)===TRUE){
@@ -132,7 +153,7 @@ class Obras extends CI_Controller {
 		{
 			$data['all_userdata'] = $this->session->all_userdata();
 			$this->load->model('obras_model');			
-			$id_user = $this->obras_model->quick_update();
+			$id_user = $this->obras_model->update();
 			redirect(base_url("obras/show/".$id_user.""));
 		}
 	}
