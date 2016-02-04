@@ -9,10 +9,9 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$data['template'] = 'login';
-		#$this->load->view('header');
+		$data['template'] = 'login'; 
 		$this->load->view('dynno-front-master/login',$data);
-		#$this->load->view('footer');
+		
 	}
 
 public function indexOld()
