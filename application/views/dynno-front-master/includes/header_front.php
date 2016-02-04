@@ -23,7 +23,7 @@
 						<ul>
 							<li><a href="#">Actividades</a></li>
 							<li><a href="#">¿Que es Dynno?</a></li>
-							<li><a href="http://ieureka.localhost/">Iniciar sesión</a></li>
+							<li><a href="http://ieureka.localhost">Iniciar sesión</a></li>
 							<li><a href="#">Registrate</a></li>
 						</ul>
 					</nav>
