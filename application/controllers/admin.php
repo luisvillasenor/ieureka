@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
 		$this->load->library('session');
-		$this->load->library('encrypt');
+		#$this->load->library('encrypt');
 	}
 	
 	public function login(){
@@ -152,7 +152,7 @@ class Admin extends CI_Controller {
 			delete_cookie('ci_session');
 			
 		}
-		redirect(base_url());
+		redirect('http://ieureka.localhost');
 	}
 
 

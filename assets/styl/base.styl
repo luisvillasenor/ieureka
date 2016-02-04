@@ -1,0 +1,328 @@
+html
+	font-size 10px
+
+body
+	background pale-grey
+	color black
+	font-family lato
+	font-weight 400
+	
+.body-font
+	font-size 14px !important
+	
+:focus
+	outline none
+
+/* color placeholder */	
+::-webkit-input-placeholder /* WebKit, Blink, Edge */
+	color silver
+
+:-moz-placeholder /* Mozilla Firefox 4 to 18 */
+	color silver
+	opacity 1
+
+::-moz-placeholder /* Mozilla Firefox 19+ */
+	color silver
+	opacity 1
+
+:-ms-input-placeholder /* Internet Explorer 10-11 */
+	color silver
+	
+a
+	color aqua-green
+	text-decoration none !important
+	transition(all .2s ease-in-out)
+	
+	&:hover
+		color grapefruit
+	
+	/*
+	&:link
+		color aqua-green
+	
+	&:visited
+		color grapefruit
+	
+	&:hover
+		color grapefruit
+		
+	&:active
+		color aqua-green
+	*/
+
+	
+h1, h2, h3, h4, h5, h6
+	color steel
+	font-weight 300
+	margin-bottom 1rem
+	margin-top 1rem
+
+h1
+	font-size 2.6rem
+	line-height 3.8rem
+	
+h2
+	font-size 2.2rem
+	line-height 3.2rem
+	
+h3
+	font-size 1.8rem
+	line-height 3rem
+	
+h4
+	font-size 1.6rem
+	line-height 2.6rem
+
+// headers bold
+.h-bold
+	font-weight 400
+	
+// headers Heroes
+.h-baymax
+	font-size 4.4rem
+	line-height 5.6rem
+
+.h-hiro
+	font-size 2.8rem
+	line-height 3.8rem
+
+.h-tadashi
+	font-size 1.8rem
+	line-height 2.4rem
+	
+// tag p
+p
+	font-size 1.4rem
+	line-height 2.4rem
+	
+// images
+.img-circle
+	border-radius(50%)
+	
+.img-circle-stroke
+	border-radius(50%)
+	border solid 5px grapefruit
+
+.img-rounded
+	border-radius(6px)
+	
+// buttons
+.cta
+	background aqua-green
+	border none
+	border-radius(4px)
+	color #fff !important
+	display inline-block
+	margin-bottom .5rem
+	margin-top .5rem
+	transition(all .2s ease-in-out)
+	
+	&:hover
+		background dark-blue-grey
+		color #fff
+		
+	&:active
+		background steel
+	
+.cta-block
+	display block
+	text-align center
+
+.cta-small
+	font-size 1.4rem
+	line-height 2rem
+	padding 1.5rem 2.5rem
+	
+.cta-medium
+	font-size 1.4rem
+	line-height 2rem
+	padding 1.5rem 6rem
+	
+.cta-large
+	font-size 1.6rem
+	line-height 2.2rem
+	padding 1.5rem 8rem
+		
+.cta-cancel
+	background grapefruit
+	
+	&:hover
+		background black
+		color #fff
+		
+	&:active
+		background steel
+		
+button.disabled, input[type=submit].disabled
+	background pale-grey
+	color silver !important
+	cursor not-allowed !important
+	
+	&:hover
+		background pale-grey
+		
+// inputs
+.label-input
+	display inline-block
+	font-size 1.6rem
+	line-height 2.2rem
+	margin-bottom .5rem
+	margin-top 1.5rem
+	
+.label-input-check-radio
+	margin-bottom 0
+
+.input-wrapper
+	position relative
+	
+	.ico-input
+		color silver
+		left 8px
+		position absolute
+		top 13px
+
+	.ico-validate
+		position absolute
+		right 8px
+		top 13px
+
+.input-control, select.input-control
+	border solid 1px steel
+	color black
+	display block
+	font-size 1.6rem
+	line-height 2.2rem
+	padding .8rem
+	width 100%
+	transition(all .1s ease-in-out)
+	
+	&:focus
+		box-shadow(inset 4px 0 0 0 steel)
+		
+select.input-control
+	appearance(none)
+	background url('../images/select-icon-down.svg') 98% 15px no-repeat #fff
+	border-radius(0)
+	height 3.8rem
+
+.input-wrapper-check-radio
+	position relative
+	margin 1rem 0
+	
+	input[type=checkbox], input[type=radio]
+		visibility hidden
+		
+		&:checked + label:after
+			color aqua-green
+			content '\f00c'
+			font-family FontAwesome
+			opacity 1
+			
+		&:disabled + label, &:disabled + label:after
+			background pale-grey
+			color #fff !important
+			cursor not-allowed
+	
+	label
+		background #fff
+		border solid .1rem steel
+		cursor pointer
+		height 2rem
+		left 0
+		position absolute
+		top 0
+		width 2rem
+		
+		&:after
+			content '\f111'
+			color pale-grey
+			font-family FontAwesome
+			font-size 1rem
+			left .5rem
+			opacity 1
+			position absolute
+			top .3rem
+			
+		&:hover::after
+			opacity 0.5
+	
+	span
+		position relative
+		left 1.5rem
+	
+			
+.input-with-icon, select.input-with-icon
+	padding .8rem .8rem .8rem 2.4rem
+	
+.input-disabled
+	background pale-grey
+	cursor not-allowed !important
+
+.input-tooltip
+	color steel
+	display block
+	font-size 1.2rem
+	line-height 1.8rem
+	margin .5rem 0
+	
+.input-tooltip-check-radio
+	margin-top 0
+	
+	
+// validation forms
+.has-error, .has-success
+	/* move controls type number */
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button
+		margin-right 15px
+
+.has-error
+	input, textarea
+		box-shadow(inset 4px 0 0 0 grapefruit)
+		
+	select
+		background url('../images/select-icon-down.svg') 93% 15px no-repeat #fff
+		box-shadow(inset 4px 0 0 0 grapefruit)
+	
+	.input-wrapper-check-radio
+		label
+			border-color grapefruit
+
+	.ico-validate
+		color grapefruit
+
+	.help-block
+		ul
+			margin 0
+			padding 0
+			
+			li
+				display inline-block
+	.input-tooltip
+		color grapefruit
+				
+.has-success
+	input, textarea
+		box-shadow(inset 4px 0 0 0 aqua-green)
+	
+	select
+		background url('../images/select-icon-down.svg') 93% 15px no-repeat #fff
+		box-shadow(inset 4px 0 0 0 aqua-green)
+		
+	.input-wrapper-check-radio
+		label
+			border-color aqua-green
+		
+	.ico-validate
+		color aqua-green
+	
+	.help-block
+		ul
+			margin 0
+			padding 0
+			
+			li
+				display inline-block
+				
+	.input-tooltip
+		color steel

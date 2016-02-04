@@ -1,0 +1,211 @@
+@import 'bootstrap.css'
+@import 'animate.css'
+
+@import 'vars.styl'
+
+@import 'base.styl'
+
+//// Desktop ////
+#wrapper
+	background white
+	margin 0 auto
+	width 1220px
+
+// Header Users
+#homepage,
+#login,
+#register		
+	header
+		background black
+		
+		.logo
+			padding 10px 0
+		
+		nav
+			padding-top 30px
+			text-align right
+			ul
+				margin 0
+				padding 0
+				
+				li
+					display inline-block
+					
+					&:after
+						content '|'
+						color #fff
+						padding-left 8px
+						padding-right 8px
+						
+					&:last-child:after
+						display none
+						
+					a
+						color #fff
+						
+						&:hover
+							color aqua-green
+		
+		#search-icon,
+		#cart-icon
+			float left
+			font-size 1.8rem
+			padding-top 30px
+			width 50%
+			
+			a
+				color #fff
+				
+				&:hover
+					color aqua-green
+		
+		#cart-icon		
+			#count-cart
+				background aqua-green
+				border-radius(50%)
+				color #fff
+				display block
+				font-size .7rem
+				height 12px
+				position absolute
+				text-align center
+				top 27px
+				transition(all .1s ease-in-out)
+				width 12px
+				
+			a
+				&:hover
+					#count-cart
+						background #fff
+						color black
+
+// Estilos para Homepage
+#homepage
+	section#initial
+		background url('../images/graphic-01.svg') right 0 no-repeat aqua-green
+		background-size auto 100%
+		padding-top 97px
+		padding-bottom 36px
+		
+		h1,
+		h3
+			color #fff
+	
+	section#middle
+		background url('../images/graphic-02.svg') center center no-repeat #fff
+		background-size cover
+		text-align center
+		padding 50px 0 65px 0
+			
+		.image-box
+			padding 25px 0
+
+
+// Estilos para Login y Register
+#login,
+#register
+	
+	#login-form
+		
+		.text-terminos-condiciones
+			border solid 1px silver
+			box-sizing(border-box)
+			max-height 140px
+			overflow-y scroll
+			overflow-x hidden
+			padding 10px 13px
+
+		.form-base
+			height 35px
+			position relative
+			margin 0 15px 0 0
+			
+			.box-1
+				position absolute
+				left 0
+				
+			.box-2
+				position absolute
+				right 0
+				top 5px
+
+		.form-footer
+			text-align center
+			margin-top 30px
+			
+	#dynno-text
+		text-align center
+	
+			
+		
+// Componentes
+#wrap-content
+	padding-top 30px
+	padding-bottom 90px
+
+#breadcrumb
+	font-size 1.4rem
+	line-height 1.8rem
+	padding-bottom 10px
+	
+	a
+		color black
+		
+		&:hover
+			color aqua-green
+
+#modal-search
+	background #fff
+	display none
+	height 100%
+	position fixed
+	top 0
+	left 0
+	width 100%
+	z-index 99
+	
+	form
+		color silver
+		margin 135px 22px 0 22px
+		
+	#close-search
+		font-size 2.5rem
+		color grapefruit
+		text-align right
+		
+		i
+			cursor pointer
+			transition(all .2s ease-in-out)
+			
+			&:hover
+				opacity .5
+	
+	input[type=text]
+		border none
+		font-size 4.4rem
+		line-height 5.6rem
+		margin 0 auto
+		padding 34px 0
+		width 100%
+		
+	input[type=submit]
+		display none
+		
+	span
+		display block
+		border-bottom solid 1px silver
+		font-size 1.8rem
+		font-weight 300
+		padding-bottom 15px
+		
+footer
+	background black
+	height 100px
+
+
+@media (min-width 992px) and (max-width 1199px)
+
+	//// Medium Desktop / Tablet Landscape ////
+	#wrapper
+		margin 0 auto
+		width 992px

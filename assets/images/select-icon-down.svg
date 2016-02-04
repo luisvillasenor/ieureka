@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="8px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: sketchtool 3.4.4 (395) - http://www.bohemiancoding.com/sketch -->
+    <title>-g-select-icon-down</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Guide-Style" sketch:type="MSArtboardGroup" transform="translate(-371.000000, -1923.000000)" fill="#BBC2CB">
+            <g id="forms" sketch:type="MSLayerGroup" transform="translate(115.000000, 1249.000000)">
+                <g id="select" transform="translate(0.000000, 631.000000)" sketch:type="MSShapeGroup">
+                    <g id="normal">
+                        <g id="-g-select-icon-down" transform="translate(256.000000, 43.000000)">
+                            <path d="M10.4593761,0.297106537 C10.8128259,-0.0990355124 11.3840843,-0.0990355124 11.7349257,0.297106537 C12.0870713,0.693248587 12.0896797,1.33328406 11.7349257,1.72942611 L6.63794434,7.39070988 C6.28579875,7.78685193 5.7158446,7.78685193 5.36109052,7.39070988 L0.264109191,1.72942611 C-0.0880363971,1.3347622 -0.0880363971,0.693248587 0.264109191,0.297106537 C0.617559022,-0.0990355124 1.18881742,-0.0990355124 1.53965877,0.297106537 L6.00147379,4.93995048 L10.4593761,0.297106537 Z" id="Page-1"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'sECTUREd1';
-$db['default']['database'] = 'ieureka';
+$db['default']['password'] = 'lgva6773';
+$db['default']['database'] = 'db202570_eurekadev';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
