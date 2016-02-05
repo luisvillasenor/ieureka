@@ -8,7 +8,7 @@
 	<section id="breadcrumb">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12"><a href="#">Inicio</a> / <a href="#">Registro de nuevo usuario</a></div>
+				<div class="col-xs-12"><a href="<?php echo base_url('welcome/index');?>">Inicio</a> / <a href="<?php echo base_url('welcome/register');?>">Registro de nuevo usuario</a></div>
 			</div>
 		</div>
 	</section>
@@ -20,13 +20,13 @@
 				<section id="login-form">
 				<div class="col-xs-12 col-md-5">
 					<h1 class="h-bold">Registrar nuevo usuario</h1>
-					<form data-toggle="validator" role="form">
-
+					<form method="post" action="<?php echo base_url('users/nuevo_usuario');?>" data-toggle="validator" role="form">
+						<input type="hidden" name="grabar" value="si" />
 						<div class="form-group">
 							<label class="label-input">Correo electrónico</label>
 							<div class="input-wrapper">
 								<i class="ico-input icon-email"></i>
-								<input type="email" class="input-control input-with-icon" placeholder="ej. pitagoras@dynno.education" required>
+								<input type="email" name="correo" class="input-control input-with-icon" placeholder="ej. pitagoras@dynno.education" required>
 								<span class="ico-validate fa form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<span class="help-block with-errors input-tooltip">El correo que proporciones sera el que utilices para iniciar sesión.</span>
@@ -36,7 +36,7 @@
 							<label class="label-input">Elige una contraseña</label>
 							<div class="input-wrapper">
 								<i class="ico-input icon-lock"></i>
-								<input type="password" class="input-control input-with-icon" placeholder="" required>
+								<input type="password" name="password" class="input-control input-with-icon" placeholder="" required>
 								<span class="ico-validate fa form-control-feedback" aria-hidden="true"></span>
 							</div>
 							<span class="help-block with-errors input-tooltip">La contraseña que proporciones sera la que utilices para iniciar sesión.</span>
@@ -76,7 +76,7 @@
 							<div class="form-group">
 								<input type="submit" class="cta cta-medium" value="Registrarme en Dynno">
 							</div>
-							<a href="#">¿Ya tienes cuenta? Inicia sesión</a>
+							<a href="<?php echo base_url('welcome/index');?>">¿Ya tienes cuenta? Inicia sesión</a>
 						</div>
 						
 					</form>
@@ -86,7 +86,7 @@
 				<section id="dynno-text">
 				<div class="col-xs-12 col-md-6 col-md-offset-1">
 					<div class="image-box">
-						<img src="assets/images/graphic-03.png" alt="Dynno.education">
+						<img src="<?php echo base_url();?>assets/images/graphic-03.png" alt="Dynno.education">
 					</div>
 					<div class="text">
 						<h2 class="h-hiro">Bienvenido a la Educación Colaborativa</h2>

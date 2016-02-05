@@ -23,8 +23,8 @@
 						<ul>
 							<li><a href="#">Actividades</a></li>
 							<li><a href="#">¿Que es Dynno?</a></li>
-							<li><a href="http://ieureka.localhost">Iniciar sesión</a></li>
-							<li><a href="#">Registrate</a></li>
+							<li><a href="<?php echo base_url('welcome/index');?>">Iniciar sesión</a></li>
+							<li><a href="<?php echo base_url('welcome/register');?>">Registrate</a></li>
 						</ul>
 					</nav>
 				</div>

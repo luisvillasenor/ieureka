@@ -14,6 +14,13 @@ class Welcome extends CI_Controller {
 		
 	}
 
+	public function register()
+	{
+		$data['template'] = 'register'; 
+		$this->load->view('dynno-front-master/register',$data);
+		
+	}
+
 public function indexOld()
 	{
 		redirect(base_url("admin/login"));

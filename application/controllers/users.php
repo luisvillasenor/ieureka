@@ -77,7 +77,7 @@ class Users extends CI_Controller {
 
 	function nuevo_usuario()
 	{
-		if(isset($_POST['grabar']) and $_POST['grabar'] == 'si')
+		if(isset($_POST['grabar']) && $_POST['grabar'] == 'si')
 		{
 			//SI EXISTE EL CAMPO OCULTO LLAMADO GRABAR CREAMOS LAS VALIDACIONES
 			//$this->form_validation->set_rules('nom','Nombre','required|trim|xss_clean');
@@ -105,12 +105,25 @@ class Users extends CI_Controller {
 				echo $correo = $this->input->post('correo');
 				echo "<br>";
 				echo "Rol => ";
-				echo $id_rol = $this->input->post('rol');
+				echo $rol = $this->input->post('rol');
+				switch ($rol) {
+					case 'creador':
+						$id_rol = 2;
+						break;
+
+					case 'customer':
+						$id_rol = 1;
+						break;
+					
+					default:
+						$id_rol = null;
+						break;
+				}
 				
 				$password = $this->input->post('password');
 				echo "<br>";
 				echo "TyC => ";
-				echo $terminos = $this->input->post('terminos');
+				echo $terminos = $this->input->post('notificacion');
 				echo "<br>";
 
 
