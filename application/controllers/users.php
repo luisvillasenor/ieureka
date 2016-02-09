@@ -41,6 +41,41 @@ class Users extends CI_Controller {
 		}
 	}
 
+	public function desactiva_cuenta($token)
+	{
+		if ( empty($token) === '' ){
+			redirect(base_url('admin/logout'));
+		}
+		else
+		{
+			$data['cuenta_activada'] = $this->activacion_model->verify_token($token);
+			if ( $data['cuenta_activada'] != FALSE ) {
+				# code...
+				$id_activacion = $data['cuenta_activada']['id_activacion'];
+				$id_user = $data['cuenta_activada']['id_user'];
+				$activacion = $this->users_model->desactivate_id($id_user);
+				if ($activacion === TRUE) {
+					# code...
+					echo "CUENTA DESACTIVADA !!!";
+					echo "<br>";
+					echo "YA PUEDE HACER LOGIN AL SISTEMA";
+					//$this->index();
+					echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
+
+					#$this->activacion_model->borrar_token($id_activacion);
+					//redirect(base_url('users/login'),'refresh');
+					//header("Location: http://dev.iceberg9.com/ieureka/");
+				}
+			}else{
+				echo "ERROR, CONTACTE AL ADMINISTRADOR";
+				//$this->index();
+				echo '<br>';
+				echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
+			}
+		}
+	}
+
+
 	public function activacion_cuenta($token)
 	{
 		if ( empty($token) === '' ){
@@ -56,21 +91,14 @@ class Users extends CI_Controller {
 				$activacion = $this->users_model->activate_id($id_user);
 				if ($activacion === TRUE) {
 					# code...
-					echo "CUENTA ACTIVADA !!!";
-					echo "<br>";
-					echo "YA PUEDE HACER LOGIN AL SISTEMA";
-					//$this->index();
-					echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
-
 					$this->activacion_model->borrar_token($id_activacion);
-					//redirect(base_url('users/login'),'refresh');
-					//header("Location: http://dev.iceberg9.com/ieureka/");
+					$data['template'] = 'login'; 
+					$this->load->view('dynno-front-master/resetok',$data);
 				}
 			}else{
 				echo "ERROR, CONTACTE AL ADMINISTRADOR";
 				//$this->index();
 				echo '<br>';
-				echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
 			}
 		}
 	}

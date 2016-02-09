@@ -19,7 +19,8 @@
 
 				<section id="login-form">
 				<div class="col-xs-12 col-md-5">
-					<h1 class="h-bold">Iniciar sesión</h1>
+					<h1 class="h-bold">Felicidades! Su Password se cambió con Exito.</h1>
+					<h1 class="h-bold">Ya puede iniciar sesión con su Nuevo Password</h1>
 					<form method="post" action="<?php echo base_url('admin/login');?>" data-toggle="validator" role="form">
 
 						<div class="form-group">
@@ -61,7 +62,7 @@
 							<div class="form-group">
 								<input type="submit" class="cta cta-medium" value="Iniciar Sesión">
 							</div>
-							<a target="_blank" href="<?php echo base_url('admin/forgot');?>">¿Olvidaste tu contraseña?</a>
+							<a target="_blank" href="<?php echo base_url('admin/resetpwd');?>">¿Olvidaste tu contraseña?</a>
 						</div>
 						
 					</form>

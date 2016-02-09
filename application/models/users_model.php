@@ -44,6 +44,18 @@ class Users_model extends CI_Model{
 		}
     }
 
+	public function desactivate_id($id_user)
+	{
+		$data = array(
+            'fecha_activacion' => date('Y-m-d H:i:s'),
+            'status' => 0
+        );
+        $this->db->where('id_user',$id_user);
+        $this->db->update('users', $data);
+        return TRUE;
+    }
+
+
 	public function activate_id($id_user)
 	{
 		$data = array(
@@ -104,6 +116,24 @@ class Users_model extends CI_Model{
         $this->db->update('users', $data);
         return $this->input->post('id_user');
 	}
+
+	public function changepwd($id_user,$confirmpassword){
+		if ( $id_user == FALSE ) {
+			# si NO hay valor en el parametro, devuelve todos los registros en forma de array
+			die();
+			//$query = $this->db->get('user');
+			//return $query->result_array();
+		}
+		# devuelve 1 registro tipo array
+			$data = array(
+	            'password' => sha1($confirmpassword),
+	            'status' => 1
+	        );
+        $this->db->where('id_user',$id_user);
+        $this->db->update('users', $data);
+        return TRUE;
+	}
+
 
 
 }

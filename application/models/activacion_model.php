@@ -30,7 +30,7 @@ class Activacion_model extends CI_Model{
 		$randkey = str_replace("=", $id_user, $randkey);
 		$data = array(
             'codigo' => $randkey,
-            'fecha_caduca' => date('Y-m-d', strtotime('+5 day')),
+            'fecha_caduca' => date('Y-m-d H:i:s', strtotime('+1 day')),
             'id_user' => $id_user
         );
 		$this->db->insert('activacion', $data);
