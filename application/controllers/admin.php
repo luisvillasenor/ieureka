@@ -114,32 +114,17 @@ class Admin extends CI_Controller {
 						redirect(base_url('member/revisor'));
 						break;
 */					default:
-						echo '<div class="alert alert-block alert-error span10">';
-						echo '<button type="button" class="close" data-dismiss="alert">x</button>';
-						echo '<h4 class="alert-heading">Ups ! Parece ser que Usted no es Miembro de este Sitio !</h4>';
-						echo '<p>';
-						echo 'Por favor solicite ayuda al administrador del sitio';
-						echo '</p>';
-						echo '<p>';
-						echo '<a class="btn btn-danger" href="'.base_url('admin/logout');'">Cerrar</a>';
-						echo '</p>';
-						echo '</div>';
-						//$this->logout();
+						$data['template'] = 'login'; 
+						$this->load->view('dynno-front-master/ups',$data);
 						break;
 				}
 				redirect(base_url('admin/logout'),'refresh');
-			} else {
-				echo '<div class="alert alert-block alert-error span10">';
-				echo '<h4 class="alert-heading">UPSs ! Parece ser que Usted no es Miembro de este Sitio ó alguno de sus Datos de Inicio de Sesion al Sistema no es Incorrecto. !</h4>';
-				echo '<p>';
-				echo 'Por favor solicite ayuda al administrador del sitio';
-				echo '</p>';
-				echo '</div>';
-				//redirect(base_url('admin/logout'),'refresh');
-				//header("Location: http://dev.iceberg9.com/ieureka/");
+			}
+				else {
+					$data['template'] = 'login'; 
+					$this->load->view('dynno-front-master/ups',$data);
 				}
 		}
-		//redirect(base_url('admin/logout'));
 	}
 
 	public function logout(){
@@ -152,7 +137,7 @@ class Admin extends CI_Controller {
 			delete_cookie('ci_session');
 			
 		}
-		redirect('http://ieureka.localhost');
+		redirect(base_url('welcome/index'));
 	}
 
 	public function forgot(){
@@ -262,5 +247,84 @@ class Admin extends CI_Controller {
 		$this->email->send();
 		#echo $this->email->print_debugger();
 	}
+
+	function register()
+	{
+		
+		$this->load->model('users_model');
+		$this->load->model('activacion_model');
+
+		if(isset($_POST['register']) and $_POST['register'] == 'si')
+		{
+			
+				$correo = $this->input->post('correo');
+				$rol = $this->input->post('rol');
+				$password = $this->input->post('password');
+				$terminosycondiciones = $this->input->post('terminosycondiciones');
+
+                //VERIFICA QUE NO EXISTA YA EL CORREO SINO CREA USUARIO Y DEVUELVE EL ID
+				$id_user = $this->users_model->new_user($correo,$rol,$password,$terminosycondiciones);
+				if ($id_user == 0) {
+					# code...
+					echo "EL CORREO <".$correo."> YA ESTA REGISTRADO EN EL SISTEMA";
+					echo '<br>';
+					echo 'PUEDE HACER LOGIN EN EL SIGUIENTE ENLACE:  ';
+					echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
+					header("Location: http://ieureka.localhost");
+					#die();
+					//redirect(base_url('users/login'),'refresh');
+				}
+
+				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
+				$randkey = $this->activacion_model->gen_code($id_user);				
+				//ENVIA MAIL CON URL DE ACTIVACION 
+				//$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
+				$url = "http://ieureka.localhost/ieureka/users/activacion_cuenta/" . $randkey;
+				$this->notificacion_new_user($correo,$url);
+				$data['template'] = 'login'; 
+				$this->load->view('dynno-front-master/chpwdok',$data);
+
+		}
+	}
+
+		public function notificacion_new_user($correo = null,$url = null){
+		
+		$this->load->library('email');
+
+		$config['useragent'] = 'CodeIgniter';
+		$config['protocol'] = 'smtp';
+		//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_host'] = 'ssl://xclf-hbvx.accessdomain.com';
+		$config['smtp_port'] = '465';
+		$config['smtp_timeout'] = '5';
+		$config['wordwrap'] = TRUE;
+		$config['wrapchars'] = '76';
+		$config['smtp_user'] = 'luis@iceberg9.com';
+		$config['smtp_pass'] = 'LGVa6773@01';
+		$config['charset'] = 'utf-8';
+		$config['newline'] = "\r\n";
+		$config['mailtype'] = 'text';// or html
+		$config['validate'] = TRUE;
+		$config['priority'] = '3';
+		$config['crlf'] = "\r\n";
+
+		$this->email->initialize($config);
+
+		$this->email->from('no-responder@ieureka.com','iEureka -- Activacion de Nueva Cuenta');
+		$this->email->to($correo);
+		$this->email->subject('Activacion de Cuenta');
+		$this->email->message('
+			Activacion de Cuenta iEureka
+			Correo Registrado.- '.$correo.'
+			URL de Activacion.- '.$url.'
+			Para activar la cuenta dé click en la url de activacion.
+			Despues ya podra hacer Login
+
+			Nota: Favor de no responder a este correo ya que es un correo no supervisado.
+		');
+		$this->email->send();
+		//echo $this->email->print_debugger();
+	}
+
 
 }

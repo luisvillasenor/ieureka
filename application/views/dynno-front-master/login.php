@@ -4,11 +4,10 @@
 ?>
 
 <div id="wrap-content">
-
 	<section id="breadcrumb">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12"><a href="http://ieureka.localhost">Inicio</a> / <a href="http://ieureka.localhost">Iniciar sesión</a></div>
+				<div class="col-xs-12"><a href="<?php echo base_url('welcome/index');?>">Inicio</a> / <a href="<?php echo base_url('welcome/index');?>">Iniciar sesión</a></div>
 			</div>
 		</div>
 	</section>
@@ -44,7 +43,7 @@
 
 						<div class="form-base">
 							<div class="box-1">
-								<p>¿No tienes cuenta? <a href="#">Crea una aquí</a></p>
+								<p>¿No tienes cuenta? <a href="<?php echo base_url('welcome/register');?>">Crea una aquí</a></p>
 							</div>
 							<div class="box-2">
 								<div class="form-group">
@@ -61,7 +60,7 @@
 							<div class="form-group">
 								<input type="submit" class="cta cta-medium" value="Iniciar Sesión">
 							</div>
-							<a target="_blank" href="<?php echo base_url('admin/forgot');?>">¿Olvidaste tu contraseña?</a>
+							<a href="<?php echo base_url('admin/forgot');?>" target="_blank">¿Olvidaste tu contraseña?</a>
 						</div>
 						
 					</form>
