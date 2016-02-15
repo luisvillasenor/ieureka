@@ -45,15 +45,7 @@
 							<div class="box-1">
 								<p>¿No tienes cuenta? <a href="<?php echo base_url('welcome/register');?>">Crea una aquí</a></p>
 							</div>
-							<div class="box-2">
-								<div class="form-group">
-									<div class="input-wrapper-check-radio">
-										<input type="checkbox" id="recordar-sesion" name="" value="">
-										<label for="recordar-sesion"></label>
-										<span>Recordar sesión</span>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 
 						<div class="form-footer">
