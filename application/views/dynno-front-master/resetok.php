@@ -19,8 +19,8 @@
 
 				<section id="login-form">
 				<div class="col-xs-12 col-md-5">
-					<h1 class="h-bold">Felicidades! Su Password se cambió con Exito.</h1>
-					<h1 class="h-bold">Ya puede iniciar sesión con su Nuevo Password</h1>
+					<h1 class="h-bold">Felicidades!</h1>
+					<h1 class="h-bold">Ya puede iniciar sesión</h1>
 					<form method="post" action="<?php echo base_url('admin/login');?>" data-toggle="validator" role="form">
 
 						<div class="form-group">

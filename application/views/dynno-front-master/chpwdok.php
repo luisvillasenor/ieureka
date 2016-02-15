@@ -10,7 +10,7 @@
 
 				<section id="login-form">
 				<div class="col-xs-12 col-md-5">
-					<h1 class="h-bold">Felicidades! Su Código para Cambiar su Password se envió con Exito.</h1>
+					<h1 class="h-bold">Felicidades!</h1>
 					<h1 class="h-bold">Revise su correo electrónico y sigas las instrucciones</h1>
 				</div>
 				</section>

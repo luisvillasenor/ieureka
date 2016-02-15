@@ -20,8 +20,13 @@
 				<section id="login-form">
 				<div class="col-xs-12 col-md-5">
 					<h1 class="h-bold">Registrar nuevo usuario</h1>
+<<<<<<< HEAD
 					<form method="post" action="<?php echo base_url('users/nuevo_usuario');?>" data-toggle="validator" role="form">
 						<input type="hidden" name="grabar" value="si" />
+=======
+					<form method="post" action="<?php echo base_url('admin/register');?>" data-toggle="validator" role="form">
+						<input type="hidden" name="register" value="si">
+>>>>>>> iss17
 						<div class="form-group">
 							<label class="label-input">Correo electrónico</label>
 							<div class="input-wrapper">
@@ -46,12 +51,12 @@
 							<label class="label-input label-input-check-radio">Quiero registrame como</label>
 							<span class="help-block with-errors input-tooltip input-tooltip-check-radio">Selecciona al menos una opción</span>
 							<div class="input-wrapper-check-radio">
-								<input type="radio" id="radio01" name="rol" value="creador" required>
+								<input type="radio" id="radio01" name="rol" value="2" required>
 								<label for="radio01"></label>
 								<span>Creador de contenido</span>
 							</div>
 							<div class="input-wrapper-check-radio">
-								<input type="radio" id="radio02" name="rol" value="customer" required>
+								<input type="radio" id="radio02" name="rol" value="1" required>
 								<label for="radio02"></label>
 								<span>Consumidor de contenido</span>
 							</div>
@@ -66,7 +71,7 @@
 								<p>Mea ea nonumy labores lobortis, duo quaestio antiopam inimicus et. Ea natum solet iisque quo, prodesset mnesarchum ne vim. Sonet detraxit temporibus no has. Omnium blandit in vim, mea at omnium oblique.</p>
 							</div>
 							<div class="input-wrapper-check-radio">
-								<input type="checkbox" id="terminos-condiciones" name="notificacion" value="1" required>
+								<input type="checkbox" id="terminos-condiciones" name="terminosycondiciones" value="1" required>
 								<label for="terminos-condiciones"></label>
 								<span>Acepto los términos y condiciones.</span>
 							</div>

@@ -38,8 +38,7 @@ class Users_model extends CI_Model{
 	        );
 	        $this->db->insert('users', $data);
 	        $id_user = $this->db->insert_id();
-	        // genera user id random para activacion
-	   		return $id_user;
+	        return $id_user;
 			
 		}
     }
