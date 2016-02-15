@@ -7,7 +7,7 @@
 	<section id="breadcrumb">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12"><a href="<?php echo base_url('welcome/index');?>">Inicio</a> / <a href="<?php echo base_url('welcome/index');?>">Iniciar sesión</a></div>
+				<div class="col-xs-12"><a href="<?php echo base_url('welcome/index');?>">Inicio</a> / <a href="<?php echo base_url('welcome/index');?>">Iniciar Sesión</a></div>
 			</div>
 		</div>
 	</section>
@@ -17,7 +17,7 @@
 			<div class="row">
 
 				<section id="login-form">
-				<div class="col-xs-12 col-md-5">
+				<div class="col-xs-12 col-sm-6 col-md-5">
 					<h1 class="h-bold">Iniciar sesión</h1>
 					<form method="post" action="<?php echo base_url('admin/login');?>" data-toggle="validator" role="form">
 
@@ -59,7 +59,7 @@
 				</section>
 
 				<section id="dynno-text">
-				<div class="col-xs-12 col-md-6 col-md-offset-1">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
 					<div class="image-box">
 						<img src="<?php echo base_url();?>assets/images/graphic-03.png" alt="Dynno.education">
 					</div>

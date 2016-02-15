@@ -18,7 +18,7 @@
 			<div class="row">
 
 				<section id="login-form">
-				<div class="col-xs-12 col-md-5">
+				<div class="col-xs-12 col-sm-6 col-md-5">
 					<h1 class="h-bold">Registrar nuevo usuario</h1>
 					<form method="post" action="<?php echo base_url('admin/register');?>" data-toggle="validator" role="form">
 						<input type="hidden" name="register" value="si">
@@ -84,7 +84,7 @@
 				</section>
 
 				<section id="dynno-text">
-				<div class="col-xs-12 col-md-6 col-md-offset-1">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
 					<div class="image-box">
 						<img src="<?php echo base_url();?>assets/images/graphic-03.png" alt="Dynno.education">
 					</div>

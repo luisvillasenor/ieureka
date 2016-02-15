@@ -115,14 +115,14 @@ class Admin extends CI_Controller {
 						break;
 */					default:
 						$data['template'] = 'login'; 
-						$this->load->view('dynno-front-master/ups',$data);
+						$this->load->view('dynno-front-master/fail-page',$data);
 						break;
 				}
 				redirect(base_url('admin/logout'),'refresh');
 			}
 				else {
 					$data['template'] = 'login'; 
-					$this->load->view('dynno-front-master/ups',$data);
+					$this->load->view('dynno-front-master/fail-page',$data);
 				}
 		}
 	}
@@ -141,8 +141,8 @@ class Admin extends CI_Controller {
 	}
 
 	public function forgot(){
-		$data['template'] = 'login'; 
-		$this->load->view('dynno-front-master/forgot',$data);
+		$data['template'] = 'forgot'; 
+		$this->load->view('dynno-front-master/forgot-password',$data);
 	}
 
 	public function validaemailreset(){
@@ -153,28 +153,36 @@ class Admin extends CI_Controller {
 		$this->load->model('users_model');
 		$this->load->model('activacion_model');
 		$get_id = $this->admin_model->get_id($clean_email_address);
-		foreach ($get_id as $key => $value) {
-			$id_user = $value;
+		
+		$id_user = null;
+
+		if ( isset($get_id) ) {
+
+			foreach ($get_id as $key => $value) {
+				$id_user = $value;
+			}
+		}		
+		
+		if ( isset($id_user) ) {
+
+			$this->users_model->desactivate_id($id_user);
+			$randkey = $this->activacion_model->gen_code($id_user);
+			$url = base_url('admin/codigoresetpwd');		
+			$this->notificacion_updatepwd($clean_email_address,$randkey,$url);		
+			
+			//$data['template'] = 'login';
+			#$data['email_address'] = $clean_email_address;
+			#$data['id_user'] = $id_user;
+			#$data['randkey'] = $randkey;
+			#$url = "http://ieureka.localhost/ieureka/users/activacion_cuenta/" . $randkey;
+			
+			#$data['url'] = $url;
+			$this->load->view('dynno-front-master/success-page');			
 		}
-		
-		if ($id_user == 0) {
-			$data['template'] = 'login';
-			$this->load->view('dynno-front-master/login',$data);			
+			else {
+				$data['template'] = 'login';
+				$this->load->view('dynno-front-master/fail-page',$data);			
 		}
-		$this->users_model->desactivate_id($id_user);
-		$randkey = $this->activacion_model->gen_code($id_user);
-		$url = "http://ieureka.localhost/ieureka/admin/codigoresetpwd";
-		
-		$this->notificacion_updatepwd($clean_email_address,$randkey,$url);		
-		
-		$data['template'] = 'login';
-		#$data['email_address'] = $clean_email_address;
-		#$data['id_user'] = $id_user;
-		#$data['randkey'] = $randkey;
-		#$url = "http://ieureka.localhost/ieureka/users/activacion_cuenta/" . $randkey;
-		
-		#$data['url'] = $url;
-		$this->load->view('dynno-front-master/chpwdok',$data);			
 	}	
 
 	public function codigoresetpwd(){
@@ -201,12 +209,11 @@ class Admin extends CI_Controller {
 			if ($activacion === TRUE) {
 				$this->activacion_model->borrar_token($id_activacion);
 				$data['template'] = 'login'; 
-				$this->load->view('dynno-front-master/resetok',$data);
+				$this->load->view('dynno-front-master/success-page');
 			}
 		}
 			else{
-				echo "ERROR, CONTACTE AL ADMINISTRADOR";
-				echo '<br>';
+				$this->load->view('dynno-front-master/fail-page',$data);
 			}
 	}
 
@@ -227,22 +234,66 @@ class Admin extends CI_Controller {
 		$config['smtp_pass'] = 'LGVa6773@01';
 		$config['charset'] = 'utf-8';
 		$config['newline'] = "\r\n";
-		$config['mailtype'] = 'text';// or html
+		$config['mailtype'] = 'html';// text or html
 		$config['validate'] = TRUE;
 		$config['priority'] = '3';
 		$config['crlf'] = "\r\n";
 
 		$this->email->initialize($config);
 
-		$this->email->from('no-responder@ieureka.com','Dynno Web System');
+		$this->email->from('no-responder@ieureka.com','Dynno.education System');
 		$this->email->to($correo);
 		$this->email->subject('Código para Cambio de Password');
 		$this->email->message('
-			Código para Cambio de Password : '.$codigo.'
+			<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+			<html>
+			<head><title></title></head>
+			<body>
+			<style type="text/css">
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 100; src: local("Lato Hairline"), local("Lato-Hairline"), url("https://fonts.gstatic.com/s/lato/v11/zJY4gsxBiSo5L7tNutxFNg.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 300; src: local("Lato Light"), local("Lato-Light"), url("https://fonts.gstatic.com/s/lato/v11/nj47mAZe0mYUIySgfn0wpQ.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 400; src: local("Lato Regular"), local("Lato-Regular"), url("https://fonts.gstatic.com/s/lato/v11/v0SdcGFAl2aezM9Vq_aFTQ.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 700; src: local("Lato Bold"), local("Lato-Bold"), url("https://fonts.gstatic.com/s/lato/v11/DvlFBScY1r-FMtZSYIYoYw.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 900; src: local("Lato Black"), local("Lato-Black"), url("https://fonts.gstatic.com/s/lato/v11/4cKlrioa77J2iqTqBgkRWg.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: italic; font-weight: 700; src: local("Lato Bold Italic"), local("Lato-BoldItalic"), url("https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYEKCWcynf_cDxXwCLxiixG1c.ttf") format("truetype");
+			}
+			a:hover {
+			color: #ff6356;
+			}
+			</style>
+
+			<div id="wrapper" style="font-family: "Lato", sans-serif; width: 100%;">
+				<div id="header" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; background: #252525; padding: 20px;">
+					<img src="http://dev.iceberg9.com/ieureka/assets/images/logo-final@2x.png" style="height: auto; max-width: 145px;">
+				</div>
+				<div id="content" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 30px 20px;">
+					<h1 style="color: #788698; font-weight: 300;">Cambio de Contraseña</h1>
+					<p><strong>Correo registrado:</strong> '.$correo.' </p>
+					<p><strong>Codigo para cambiar reset el password:</strong> '.$codigo.' </p>
+					<p><strong>URL de activaci&oacute;n:</strong> <a href="'.$url.'" target="_blank" style="color: #14d593; text-decoration: none;">'.$url.'</a></p>
+					<p>Para cambiar la clave de acceso de su cuenta de click en la url de activaci&oacute;n. Despues ya podr&aacute;s iniciar sesi&oacute;n.</p>
+					<p class="note">Favor de no responder este email ya que es un correo no supervisado.</p>
+				</div>
+				<div id="footer" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; width: 100%; background: #252525; padding: 30px 0;" align="center">
+					<a href="#" style="color: #14d593; text-decoration: none;">Dynno.education</a>
+				</div>
+			</div>
+
+			</body>
+			</html>
+		
 			
-			Copie el código de arriba y uselo en el siguiente link: '.$url.'
-			
-			Nota: Favor de no responder a este correo ya que es un correo no supervisado.
 		');
 		$this->email->send();
 		#echo $this->email->print_debugger();
@@ -269,20 +320,20 @@ class Admin extends CI_Controller {
 					echo "EL CORREO <".$correo."> YA ESTA REGISTRADO EN EL SISTEMA";
 					echo '<br>';
 					echo 'PUEDE HACER LOGIN EN EL SIGUIENTE ENLACE:  ';
-					echo anchor('http://dev.iceberg9.com/ieureka', 'http://dev.iceberg9.com/ieureka', 'class="link-class"');
-					header("Location: http://ieureka.localhost");
+					echo anchor(base_url(), base_url(), 'class="link-class"');
+					#header("Location: http://ieureka.localhost");
 					#die();
-					//redirect(base_url('users/login'),'refresh');
+					redirect(base_url('admin/login'),'refresh');
 				}
 
 				//GENERA TOKEN PARA EL NUEVO USUARIO Y SE ALMACENA EN LABD
 				$randkey = $this->activacion_model->gen_code($id_user);				
 				//ENVIA MAIL CON URL DE ACTIVACION 
-				//$url = "http://dev.iceberg9.com/ieureka/users/activacion_cuenta/" . $randkey;
-				$url = "http://ieureka.localhost/ieureka/users/activacion_cuenta/" . $randkey;
+				$url = base_url('users/activacion_cuenta')."/".$randkey;
+				#$url = "http://ieureka.localhost/ieureka/users/activacion_cuenta/" . $randkey;
 				$this->notificacion_new_user($correo,$url);
 				$data['template'] = 'login'; 
-				$this->load->view('dynno-front-master/chpwdok',$data);
+				$this->load->view('dynno-front-master/success-page');
 
 		}
 	}
@@ -303,24 +354,65 @@ class Admin extends CI_Controller {
 		$config['smtp_pass'] = 'LGVa6773@01';
 		$config['charset'] = 'utf-8';
 		$config['newline'] = "\r\n";
-		$config['mailtype'] = 'text';// or html
+		$config['mailtype'] = 'html';// text or html
 		$config['validate'] = TRUE;
 		$config['priority'] = '3';
 		$config['crlf'] = "\r\n";
 
 		$this->email->initialize($config);
 
-		$this->email->from('no-responder@ieureka.com','iEureka -- Activacion de Nueva Cuenta');
+		$this->email->from('no-responder@ieureka.com','Dynno.education -- Activacion de Nueva Cuenta');
 		$this->email->to($correo);
 		$this->email->subject('Activacion de Cuenta');
 		$this->email->message('
-			Activacion de Cuenta iEureka
-			Correo Registrado.- '.$correo.'
-			URL de Activacion.- '.$url.'
-			Para activar la cuenta dé click en la url de activacion.
-			Despues ya podra hacer Login
+			<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+			<html>
+			<head><title></title></head>
+			<body>
+			<style type="text/css">
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 100; src: local("Lato Hairline"), local("Lato-Hairline"), url("https://fonts.gstatic.com/s/lato/v11/zJY4gsxBiSo5L7tNutxFNg.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 300; src: local("Lato Light"), local("Lato-Light"), url("https://fonts.gstatic.com/s/lato/v11/nj47mAZe0mYUIySgfn0wpQ.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 400; src: local("Lato Regular"), local("Lato-Regular"), url("https://fonts.gstatic.com/s/lato/v11/v0SdcGFAl2aezM9Vq_aFTQ.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 700; src: local("Lato Bold"), local("Lato-Bold"), url("https://fonts.gstatic.com/s/lato/v11/DvlFBScY1r-FMtZSYIYoYw.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: normal; font-weight: 900; src: local("Lato Black"), local("Lato-Black"), url("https://fonts.gstatic.com/s/lato/v11/4cKlrioa77J2iqTqBgkRWg.ttf") format("truetype");
+			}
+			@font-face {
+			font-family: "Lato"; font-style: italic; font-weight: 700; src: local("Lato Bold Italic"), local("Lato-BoldItalic"), url("https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYEKCWcynf_cDxXwCLxiixG1c.ttf") format("truetype");
+			}
+			a:hover {
+			color: #ff6356;
+			}
+			</style>
 
-			Nota: Favor de no responder a este correo ya que es un correo no supervisado.
+			<div id="wrapper" style="font-family: "Lato", sans-serif; width: 100%;">
+				<div id="header" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; width: 100%; background: #252525; padding: 20px;">
+					<img src="http://dev.iceberg9.com/ieureka/assets/images/logo-final@2x.png" style="height: auto; max-width: 145px;">
+				</div>
+				<div id="content" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 30px 20px;">
+					<h1 style="color: #788698; font-weight: 300;">Activaci&oacute;n de cuenta</h1>
+					<p><strong>Correo registrado:</strong> '.$correo.' </p>
+					<p><strong>URL de activaci&oacute;n:</strong> <a href="'.$url.'" target="_blank" style="color: #14d593; text-decoration: none;">'.$url.'</a></p>
+					<p>Para activar la cuenta de click en la url de activaci&oacute;n. Despues ya podr&aacute;s iniciar sesi&oacute;n.</p>
+					<p class="note">Favor de no responder este email ya que es un correo no supervisado.</p>
+				</div>
+				<div id="footer" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; text-align: center; width: 100%; background: #252525; padding: 30px 0;" align="center">
+					<a href="#" style="color: #14d593; text-decoration: none;">Dynno.education</a>
+				</div>
+			</div>
+
+			</body>
+			</html>
+		
+			
 		');
 		$this->email->send();
 		//echo $this->email->print_debugger();

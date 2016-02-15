@@ -21,10 +21,6 @@ class Welcome extends CI_Controller {
 		
 	}
 
-public function indexOld()
-	{
-		redirect(base_url("admin/login"));
-	}
 
 }
 

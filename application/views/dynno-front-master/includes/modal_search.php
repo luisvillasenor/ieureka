@@ -14,16 +14,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	$('#trigger-search').click(function() {
-		$('#modal-search').animateCSS('fadeInDownBig');
-		$('#search-input-focus').focus();
-	});
-
-	$('#close-search i').click(function() {
-		$('#modal-search').animateCSS('fadeOutUpBig', function(){
-			$('#modal-search').css('display', 'none');
-		});
-	});
-</script>

@@ -81,26 +81,25 @@ class Users extends CI_Controller {
 		if ( empty($token) === '' ){
 			redirect(base_url('admin/logout'));
 		}
-		else
-		{
-			$data['cuenta_activada'] = $this->activacion_model->verify_token($token);
-			if ( $data['cuenta_activada'] != FALSE ) {
-				# code...
-				$id_activacion = $data['cuenta_activada']['id_activacion'];
-				$id_user = $data['cuenta_activada']['id_user'];
-				$activacion = $this->users_model->activate_id($id_user);
-				if ($activacion === TRUE) {
+			else
+			{
+				$data['cuenta_activada'] = $this->activacion_model->verify_token($token);
+				if ( $data['cuenta_activada'] != FALSE ) {
 					# code...
-					$this->activacion_model->borrar_token($id_activacion);
-					$data['template'] = 'login'; 
-					$this->load->view('dynno-front-master/resetok',$data);
+					$id_activacion = $data['cuenta_activada']['id_activacion'];
+					$id_user = $data['cuenta_activada']['id_user'];
+					$activacion = $this->users_model->activate_id($id_user);
+					if ($activacion === TRUE) {
+						# code...
+						$this->activacion_model->borrar_token($id_activacion);
+						$data['template'] = 'login'; 
+						$this->load->view('dynno-front-master/success-page');
+					}
 				}
-			}else{
-				echo "ERROR, CONTACTE AL ADMINISTRADOR";
-				//$this->index();
-				echo '<br>';
+					else{
+						$this->load->view('dynno-front-master/fail-page');
+				}
 			}
-		}
 	}
 
 	function nuevo_usuario()
@@ -235,10 +234,11 @@ class Users extends CI_Controller {
 			$data['perfil_data'] = $this->users_model->show($id_user);
 						$this->load->model('obras_model');
 			$data['obras_data'] = $this->obras_model->show($id_user);
-			$this->load->view('header');
-			$this->load->view('navbarautor');
-			$this->load->view('users/show',$data);
-			$this->load->view('footer');
+			#$this->load->view('header');
+			#$this->load->view('navbarautor');
+			#$this->load->view('users/show',$data);
+			$this->load->view('dynno-front-master/admin-account-resumen',$data);
+			#$this->load->view('footer');
 		}
 	}	
 	public function changepwd($id_user){

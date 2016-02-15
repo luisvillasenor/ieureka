@@ -1,0 +1,96 @@
+header
+	.logo
+		padding 10px 0
+	
+	nav
+		display block
+		margin 0
+		padding-top 30px
+		text-align right
+		
+		ul
+			li
+				display inline-block
+				margin 0
+				
+				&:after
+					content '|'
+					color #fff
+					padding-left 8px
+					padding-right 8px
+					
+				&:last-child:after
+					display none
+					
+				a
+					border none
+					color #fff
+					display inline
+					padding 0
+					
+					&:hover
+						background none
+						border none
+						color aqua-green
+	
+	#search-icon,
+	#cart-icon
+		float left
+		font-size 1.8rem
+		padding-top 30px
+		width 50%
+		
+		a
+			color #fff
+			
+			&:hover
+				color aqua-green
+	
+	#cart-icon		
+		#count-cart
+			background aqua-green
+			border-radius(50%)
+			color #fff
+			display block
+			font-size .7rem
+			height 12px
+			position absolute
+			text-align center
+			top 27px
+			transition(all .1s ease-in-out)
+			width 12px
+			
+		a
+			&:hover
+				#count-cart
+					background #fff
+					color black
+
+// Estilos para Homepage
+#homepage
+	section#initial
+		background url('../images/graphic-01.svg') right 0 no-repeat aqua-green
+		background-size auto 100%
+		text-align left
+		padding-top 97px
+		padding-bottom 36px
+	
+	section#middle
+		background url('../images/graphic-02.svg') center center no-repeat #fff
+		background-size cover
+		padding 50px 0 65px 0
+		
+// Estilo para Forgot password
+#forgot,
+#change-password
+	
+	#login-form
+		margin 0 auto
+		width 500px
+		
+		h1,
+		p
+			text-align center
+			
+	
+			

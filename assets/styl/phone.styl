@@ -1,0 +1,177 @@
+#wrapper
+	background white
+	width 100%
+	
+	img
+		height auto
+		max-width 100%
+
+// Componentes
+#wrap-content
+	padding-top 30px
+	padding-bottom 90px
+
+#breadcrumb
+	font-size 1.4rem
+	line-height 1.8rem
+	padding-bottom 20px
+	
+	a
+		color black
+		
+		&:hover
+			color aqua-green
+
+#modal-search
+	background #fff
+	display none
+	height 100%
+	position fixed
+	top 0
+	left 0
+	width 100%
+	z-index 99
+	
+	form
+		color silver
+		margin 135px 22px 0 22px
+		
+	#close-search
+		font-size 2.5rem
+		color grapefruit
+		text-align right
+		
+		i
+			cursor pointer
+			transition(all .2s ease-in-out)
+			
+			&:hover
+				opacity .5
+	
+	input[type=text]
+		border none
+		font-size 4.4rem
+		line-height 5.6rem
+		margin 0 auto
+		padding 34px 0
+		width 100%
+		
+	input[type=submit]
+		display none
+		
+	span
+		display block
+		border-bottom solid 1px silver
+		font-size 1.8rem
+		font-weight 300
+		padding-bottom 15px
+
+/* Header for Front */	
+header
+	background black
+	
+	.logo
+		padding 15px 0
+	
+	.mobile-hamburger
+		color #fff
+		font-size 3.1rem
+		position relative
+		text-align right
+		top 15px
+		
+		i
+			display block
+			padding 10px 0 10px 10px
+			
+	nav
+		display none
+		text-align center
+		margin-top 10px
+		margin-bottom 20px
+		
+		ul
+			margin 0
+			padding 0
+			
+			li
+				margin 5px 0
+				
+				a
+					border solid 1px steel
+					color pale-grey
+					display block
+					padding 10px 0
+					
+					&:hover
+						background aqua-green
+						border-color aqua-green
+						color #fff
+			
+
+/* Estilos para Homepage */
+#homepage
+	section#initial
+		background aqua-green
+		text-align center
+		padding-top 20px
+		padding-bottom 30px
+		
+		h1,
+		h3
+			color #fff
+	
+	section#middle
+		background #fff
+		text-align center
+		padding 30px 0
+			
+		.image-box
+			padding 25px 0
+
+// Estilos para Login y Register
+#login,
+#register,
+#forgot,
+#change-password
+	
+	#login-form
+		.text-terminos-condiciones
+			border solid 1px silver
+			box-sizing(border-box)
+			max-height 140px
+			overflow-y scroll
+			overflow-x hidden
+			padding 0 13px
+
+		.form-base
+			height 35px
+			position relative
+			margin 0 15px 0 0
+
+		.form-footer
+			text-align center
+			margin-top 30px
+			
+	#dynno-text
+		text-align center
+
+// Message pages
+#message-page
+	.message-success
+		text-align center
+		
+		i
+			color aqua-green
+			font-size 6rem
+			
+	.message-fail
+		text-align center
+		
+		i
+			color grapefruit
+			font-size 6rem
+	
+footer
+	background black
+	height 100px

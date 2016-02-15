@@ -55,6 +55,8 @@ class Admin_model extends CI_Model {
 
     $q = $this->db->get('users');
 
+
+
     if ( $q->num_rows > 0 ){
       return $q->row();
     }
@@ -68,11 +70,12 @@ class Admin_model extends CI_Model {
     $this->db->where('email_address',$clean_email_address);
     $this->db->limit(1);
     $q = $this->db->get('users');
-    if ( $q->num_rows > 0 ){
+
+    if ( isset($q->row_data) ){
       return $q->row();
     } 
       else {
-        return 0;
+        return null;
       }
   }
 

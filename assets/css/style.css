@@ -355,167 +355,11 @@ select.input-with-icon {
 }
 #wrapper {
   background: #fff;
-  margin: 0 auto;
-  width: 1220px;
+  width: 100%;
 }
-#homepage header,
-#login header,
-#register header {
-  background: #252525;
-}
-#homepage header .logo,
-#login header .logo,
-#register header .logo {
-  padding: 10px 0;
-}
-#homepage header nav,
-#login header nav,
-#register header nav {
-  padding-top: 30px;
-  text-align: right;
-}
-#homepage header nav ul,
-#login header nav ul,
-#register header nav ul {
-  margin: 0;
-  padding: 0;
-}
-#homepage header nav ul li,
-#login header nav ul li,
-#register header nav ul li {
-  display: inline-block;
-}
-#homepage header nav ul li:after,
-#login header nav ul li:after,
-#register header nav ul li:after {
-  content: '|';
-  color: #fff;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-#homepage header nav ul li:last-child:after,
-#login header nav ul li:last-child:after,
-#register header nav ul li:last-child:after {
-  display: none;
-}
-#homepage header nav ul li a,
-#login header nav ul li a,
-#register header nav ul li a {
-  color: #fff;
-}
-#homepage header nav ul li a:hover,
-#login header nav ul li a:hover,
-#register header nav ul li a:hover {
-  color: #14d593;
-}
-#homepage header #search-icon,
-#login header #search-icon,
-#register header #search-icon,
-#homepage header #cart-icon,
-#login header #cart-icon,
-#register header #cart-icon {
-  float: left;
-  font-size: 1.8rem;
-  padding-top: 30px;
-  width: 50%;
-}
-#homepage header #search-icon a,
-#login header #search-icon a,
-#register header #search-icon a,
-#homepage header #cart-icon a,
-#login header #cart-icon a,
-#register header #cart-icon a {
-  color: #fff;
-}
-#homepage header #search-icon a:hover,
-#login header #search-icon a:hover,
-#register header #search-icon a:hover,
-#homepage header #cart-icon a:hover,
-#login header #cart-icon a:hover,
-#register header #cart-icon a:hover {
-  color: #14d593;
-}
-#homepage header #cart-icon #count-cart,
-#login header #cart-icon #count-cart,
-#register header #cart-icon #count-cart {
-  background: #14d593;
-  -webkit-border-radius: 50% 50% 50% 50% !important;
-  border-radius: 50% 50% 50% 50% !important;
-  color: #fff;
-  display: block;
-  font-size: 0.7rem;
-  height: 12px;
-  position: absolute;
-  text-align: center;
-  top: 27px;
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -ms-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  width: 12px;
-}
-#homepage header #cart-icon a:hover #count-cart,
-#login header #cart-icon a:hover #count-cart,
-#register header #cart-icon a:hover #count-cart {
-  background: #fff;
-  color: #252525;
-}
-#homepage section#initial {
-  background: url("../images/graphic-01.svg") right 0 no-repeat #14d593;
-  background-size: auto 100%;
-  padding-top: 97px;
-  padding-bottom: 36px;
-}
-#homepage section#initial h1,
-#homepage section#initial h3 {
-  color: #fff;
-}
-#homepage section#middle {
-  background: url("../images/graphic-02.svg") center center no-repeat #fff;
-  background-size: cover;
-  text-align: center;
-  padding: 50px 0 65px 0;
-}
-#homepage section#middle .image-box {
-  padding: 25px 0;
-}
-#login #login-form .text-terminos-condiciones,
-#register #login-form .text-terminos-condiciones {
-  border: solid 1px #bbc2cb;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  max-height: 140px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 10px 13px;
-}
-#login #login-form .form-base,
-#register #login-form .form-base {
-  height: 35px;
-  position: relative;
-  margin: 0 15px 0 0;
-}
-#login #login-form .form-base .box-1,
-#register #login-form .form-base .box-1 {
-  position: absolute;
-  left: 0;
-}
-#login #login-form .form-base .box-2,
-#register #login-form .form-base .box-2 {
-  position: absolute;
-  right: 0;
-  top: 5px;
-}
-#login #login-form .form-footer,
-#register #login-form .form-footer {
-  text-align: center;
-  margin-top: 30px;
-}
-#login #dynno-text,
-#register #dynno-text {
-  text-align: center;
+#wrapper img {
+  height: auto;
+  max-width: 100%;
 }
 #wrap-content {
   padding-top: 30px;
@@ -524,7 +368,7 @@ select.input-with-icon {
 #breadcrumb {
   font-size: 1.4rem;
   line-height: 1.8rem;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 #breadcrumb a {
   color: #252525;
@@ -580,13 +424,230 @@ select.input-with-icon {
   font-weight: 300;
   padding-bottom: 15px;
 }
+header {
+  background: #252525;
+}
+header .logo {
+  padding: 15px 0;
+}
+header .mobile-hamburger {
+  color: #fff;
+  font-size: 3.1rem;
+  position: relative;
+  text-align: right;
+  top: 15px;
+}
+header .mobile-hamburger i {
+  display: block;
+  padding: 10px 0 10px 10px;
+}
+header nav {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  margin: 5px 0;
+}
+header nav ul li a {
+  border: solid 1px #788698;
+  color: #e8eaee;
+  display: block;
+  padding: 10px 0;
+}
+header nav ul li a:hover {
+  background: #14d593;
+  border-color: #14d593;
+  color: #fff;
+}
+#homepage section#initial {
+  background: #14d593;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+#homepage section#initial h1,
+#homepage section#initial h3 {
+  color: #fff;
+}
+#homepage section#middle {
+  background: #fff;
+  text-align: center;
+  padding: 30px 0;
+}
+#homepage section#middle .image-box {
+  padding: 25px 0;
+}
+#login #login-form .text-terminos-condiciones,
+#register #login-form .text-terminos-condiciones,
+#forgot #login-form .text-terminos-condiciones,
+#change-password #login-form .text-terminos-condiciones {
+  border: solid 1px #bbc2cb;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  max-height: 140px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 13px;
+}
+#login #login-form .form-base,
+#register #login-form .form-base,
+#forgot #login-form .form-base,
+#change-password #login-form .form-base {
+  height: 35px;
+  position: relative;
+  margin: 0 15px 0 0;
+}
+#login #login-form .form-footer,
+#register #login-form .form-footer,
+#forgot #login-form .form-footer,
+#change-password #login-form .form-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+#login #dynno-text,
+#register #dynno-text,
+#forgot #dynno-text,
+#change-password #dynno-text {
+  text-align: center;
+}
+#message-page .message-success {
+  text-align: center;
+}
+#message-page .message-success i {
+  color: #14d593;
+  font-size: 6rem;
+}
+#message-page .message-fail {
+  text-align: center;
+}
+#message-page .message-fail i {
+  color: #ff6356;
+  font-size: 6rem;
+}
 footer {
   background: #252525;
   height: 100px;
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 768px) {
+  #login #login-form .form-base .box-1,
+  #register #login-form .form-base .box-1,
+  #forgot #login-form .form-base .box-1 {
+    position: absolute;
+    left: 0;
+  }
+  #login #login-form .form-base .box-2,
+  #register #login-form .form-base .box-2,
+  #forgot #login-form .form-base .box-2 {
+    position: absolute;
+    right: 0;
+    top: 5px;
+  }
+}
+@media (min-width: 992px) {
+  header .logo {
+    padding: 10px 0;
+  }
+  header nav {
+    display: block;
+    margin: 0;
+    padding-top: 30px;
+    text-align: right;
+  }
+  header nav ul li {
+    display: inline-block;
+    margin: 0;
+  }
+  header nav ul li:after {
+    content: '|';
+    color: #fff;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  header nav ul li:last-child:after {
+    display: none;
+  }
+  header nav ul li a {
+    border: none;
+    color: #fff;
+    display: inline;
+    padding: 0;
+  }
+  header nav ul li a:hover {
+    background: none;
+    border: none;
+    color: #14d593;
+  }
+  header #search-icon,
+  header #cart-icon {
+    float: left;
+    font-size: 1.8rem;
+    padding-top: 30px;
+    width: 50%;
+  }
+  header #search-icon a,
+  header #cart-icon a {
+    color: #fff;
+  }
+  header #search-icon a:hover,
+  header #cart-icon a:hover {
+    color: #14d593;
+  }
+  header #cart-icon #count-cart {
+    background: #14d593;
+    -webkit-border-radius: 50% 50% 50% 50% !important;
+    border-radius: 50% 50% 50% 50% !important;
+    color: #fff;
+    display: block;
+    font-size: 0.7rem;
+    height: 12px;
+    position: absolute;
+    text-align: center;
+    top: 27px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    width: 12px;
+  }
+  header #cart-icon a:hover #count-cart {
+    background: #fff;
+    color: #252525;
+  }
+  #homepage section#initial {
+    background: url("../images/graphic-01.svg") right 0 no-repeat #14d593;
+    background-size: auto 100%;
+    text-align: left;
+    padding-top: 97px;
+    padding-bottom: 36px;
+  }
+  #homepage section#middle {
+    background: url("../images/graphic-02.svg") center center no-repeat #fff;
+    background-size: cover;
+    padding: 50px 0 65px 0;
+  }
+  #forgot #login-form,
+  #change-password #login-form {
+    margin: 0 auto;
+    width: 500px;
+  }
+  #forgot #login-form h1,
+  #change-password #login-form h1,
+  #forgot #login-form p,
+  #change-password #login-form p {
+    text-align: center;
+  }
+}
+@media (min-width: 1200px) {
   #wrapper {
     margin: 0 auto;
-    width: 992px;
+    width: 1220px;
   }
 }
