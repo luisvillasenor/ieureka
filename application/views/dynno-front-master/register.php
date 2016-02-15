@@ -20,13 +20,8 @@
 				<section id="login-form">
 				<div class="col-xs-12 col-md-5">
 					<h1 class="h-bold">Registrar nuevo usuario</h1>
-<<<<<<< HEAD
-					<form method="post" action="<?php echo base_url('users/nuevo_usuario');?>" data-toggle="validator" role="form">
-						<input type="hidden" name="grabar" value="si" />
-=======
 					<form method="post" action="<?php echo base_url('admin/register');?>" data-toggle="validator" role="form">
 						<input type="hidden" name="register" value="si">
->>>>>>> iss17
 						<div class="form-group">
 							<label class="label-input">Correo electrónico</label>
 							<div class="input-wrapper">
