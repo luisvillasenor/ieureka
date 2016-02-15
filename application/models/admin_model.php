@@ -64,15 +64,16 @@ class Admin_model extends CI_Model {
 
 
   function get_id($clean_email_address){
-
-    $this->db->select('id');
+    $this->db->select('id_user');
     $this->db->where('email_address',$clean_email_address);
     $this->db->limit(1);
-
     $q = $this->db->get('users');
-
-    return $q->result();
-
+    if ( $q->num_rows > 0 ){
+      return $q->row();
+    } 
+      else {
+        return 0;
+      }
   }
 
   function up_date ($clean_email_address) {

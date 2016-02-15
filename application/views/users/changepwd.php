@@ -7,7 +7,7 @@
 
 <form id="enableForm" method="post" action="<?php echo base_url('users/updatepwd');?>" class="form-horizontal">
     
-    <input type="hidden" class="form-control" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user');?>" />
+    <input type="text" class="form-control" name="id_user" id="id_user" value="<?php echo $this->session->userdata('id_user');?>" />
 
     <div class="form-group">
         <label class="col-xs-3 control-label">Nuevo Password</label>

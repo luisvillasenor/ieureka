@@ -3,6 +3,7 @@
 </div>
 
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/jquery-1.11.2.min.js" type="text/javascript"></script>  
+<<<<<<< HEAD
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/affix.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/alert.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/button.js" type="text/javascript"></script>
@@ -21,6 +22,8 @@
 <script src="<?php echo base_url();?>jquery-ui-1.11.4/external/jquery/jquery.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>jquery-ui-1.11.4/jquery-ui.js" type="text/javascript"></script>
 
+=======
+>>>>>>> iss16
 
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/validator.js"></script>
