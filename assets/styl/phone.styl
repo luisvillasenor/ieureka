@@ -65,8 +65,452 @@
 		font-size 1.8rem
 		font-weight 300
 		padding-bottom 15px
+		
+/*-- Generales --*/
 
-/* Header for Front */	
+html, body{
+	height 100%
+	width 100%
+	margin 0
+	padding 0
+	display block
+}
+
+.tema-azul
+	background #1f3557
+
+/*-- Header for Front --*/
+
+.contenedor-header
+	background #000
+	
+	header
+		background none
+		
+		&:after
+			content ''
+			display block
+			clear both
+		
+		.contenedor-logo
+			width 100%
+			padding-top 10px
+			padding-bottom 10px
+			text-align center
+			float left
+			display inline-block
+			
+				img
+					height auto
+					width 100%
+					max-width 140px
+					margin-bottom 10px
+				
+			.separador
+				height 20px
+				width 2px
+				margin-left 10px
+				margin-right 10px
+				vertical-align middle
+				display none
+				background #fff
+				
+			.seccion-actual
+				margin-bottom 10px
+				color #fff
+				font-size 14px
+				line-height 114%
+				vertical-align middle
+				display block
+				
+		nav
+			width 100%
+			margin 0
+			padding 0
+			color #fff
+			font-size 14px
+			text-align center
+			float left
+			display block
+			
+			ul
+				margin 0
+				padding 0
+				padding-top 10px
+				padding-bottom 10px
+				list-style none
+				
+				li
+					padding-right 10px
+					padding-left 10px
+					border-right 1px solid white
+					display inline-block
+					
+					&:last-child
+						border none
+					
+					a
+						padding 0
+						border none
+						
+						&:hover
+							color aqua-green
+							background none
+							
+/*-- Contenedor General --*/
+
+.contenedor-general
+	margin-top 40px
+	
+/*-- Contenedor Body --*/
+
+.contenedor-body
+	font-size 14px
+	background #e8eaee
+	
+	.body-nav
+		color #fff
+		background #252525
+		
+		.nav-perfil
+			padding 30px 10px 
+			color #bdbdbd
+			text-align center
+			
+			.perfil-img
+				
+				img
+					border-radius 50%
+					
+			.perfil-text
+				margin-top 15px
+				
+		.nav-menu
+			border-top 1px solid #0f0f0f
+			border-bottom 1px solid #343434
+			
+			ul
+				margin 0
+				padding 0
+				list-style none
+				
+				li
+					padding-top 30px
+					padding-right 20px
+					padding-bottom 30px
+					padding-left 20px
+					border-top 1px solid #343434
+					border-left 5px solid #252525
+					border-bottom 1px solid #0f0f0f
+					cursor pointer
+					transition(color 0.2s ease-in-out)
+					
+					&:hover
+						color aqua-green
+					
+					i
+						font-size 20px
+						float left
+						vertical-align middle
+						
+					div 
+						margin-left 30px
+					
+				.menu-activo
+					border-left 5px solid #ff6550
+		
+	.body-contenido
+		margin-top 50px
+		padding-bottom 50px
+		position relative
+		
+		.contenido
+			padding-left 15px
+			padding-right 15px
+
+			form
+				margin-top 30px
+				
+				label
+					margin-bottom 5px
+					display block
+					
+				input
+					width 100%
+					margin-bottom 5px
+					padding 10px
+					border 1px solid #bbc2cc
+					display block
+					
+				select
+					width 100%
+					padding 10px
+					margin-bottom 5px
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					display block
+					background: url("../images/select-icon-down.svg") 98% 15px no-repeat #fff;
+					
+				textarea
+					width 100%
+					margin-bottom 5px
+					border 1px solid #bbc2cc
+					
+				.form-anotacion
+					color #79869a
+					
+				.cont-input
+					margin-top 40px
+					
+			
+			.contenido-titulo
+				padding-top 50px
+				
+				h1					
+					margin-bottom 0
+					padding-bottom 15px
+					border-bottom 1px solid #d4d6da
+					color aqua-green
+					font-family inherit
+					font-weight 700
+					font-size 26px
+					
+		.contenido-recuadro
+			
+			.recuadro
+				margin-top 30px				
+				padding 20px
+				background #fff
+				
+				h2
+					margin 0
+					padding 0
+					color #252525
+					font-weight 700
+					font-size 18px
+					
+				.recuadro-contenido
+					margin-top 30px
+					
+					.recuadro-img
+						float left
+						
+						img
+							border-radius 50%
+						
+					.recuadro-text
+						
+						.text-campo
+							color #788698
+							font-size 14px
+							font-weight 400
+							
+						.text-destacado
+							color aqua-green
+							font-size 14px
+							font-weight 400
+							
+						.text-info
+							color #252525
+							font-size 14px
+							font-weight 400
+							
+					.recuadro-text-img
+						margin-left 70px
+						padding-bottom 3px
+						
+						&:after
+							content ''
+							display block
+							clear both
+
+			.tabla
+				padding 20px
+				margin-top 30px
+				margin-bottom 30px
+				background #fff
+
+				h2
+					margin 0
+					padding 0
+					color #252525
+					font-weight 700
+					font-size 18px
+					
+				table
+
+					.tabla-titulos
+						color steel
+						font-size 14px
+						font-weight 400
+						border-bottom 1px solid rgba(120,134,152, .3)
+
+					tr
+						&:nth-child(even)
+							background #f6f6f6
+
+						td
+							width 100%
+							display block
+							padding 20px 10px
+							
+							&:last-child
+								
+								span
+									margin-bottom 10px
+
+							span
+								color steel
+								font-size 14px
+								font-weight 400
+								
+						a
+							margin-top 10px
+							color #fff
+							padding 5px 10px
+							border-radius 3px
+							background aqua-green
+							transition(background .2s ease-in-out)
+							
+							&:hover
+								background #1e3654
+								
+.cont-menu-movil
+	position relative
+								
+	.menu-movil
+		color #fff
+		text-align center
+		background #252525
+				
+		.menu-opciones
+			color #fff
+			background #252525
+			
+			.nav-perfil
+				padding 30px 10px 
+				color #bdbdbd
+				text-align center
+				
+				.perfil-img
+					
+					img
+						border-radius 50%
+						
+				.perfil-text
+					margin-top 15px
+					
+				.menu-icon
+					margin-top 20px
+					
+					.menu-lineas
+						height 10px
+						width 50px
+						margin auto
+						cursor pointer
+						position relative					
+					
+						span
+							height 2px
+							width 50%
+							left 50%
+							display block
+							position absolute
+							background #fff
+							-webkit-transform: translateX(-50%);
+							-ms-transform: translateX(-50%);
+							-o-transform: translateX(-50%);
+							transform: translateX(-50%);
+							transition(all 0.2s ease)
+							
+							&:first-child
+								top 0
+							
+							&:last-child
+								bottom 0
+					
+			.nav-menu
+				border-top 1px solid #0f0f0f
+				border-bottom 1px solid #343434
+				
+				ul
+					height 0
+					margin 0
+					padding 0
+					list-style none
+					overflow hidden
+					transition(height 0.2s ease)
+					
+					li
+						padding-top 30px
+						padding-right 20px
+						padding-bottom 30px
+						padding-left 20px
+						border-top 1px solid #343434
+						border-left 5px solid #252525
+						border-bottom 1px solid #0f0f0f
+						cursor pointer
+						transition(color 0.2s ease-in-out)
+						
+						&:hover
+							color aqua-green
+						
+						i
+							font-size 20px
+							vertical-align middle
+						
+					.menu-activo
+						border-left 5px solid #ff6550
+						border-right 5px solid #ff6550
+
+.recuadro-boton
+	margin-top 30px
+	padding-left 20px
+	padding-right 20px
+	text-align center
+	
+	span
+		padding 10px 20px
+		border-radius 3px
+		color #fff
+		font-size 13px
+		font-weight 400
+		text-transform uppercase
+		display inline-block
+		background aqua-green
+		transition(background .2s ease-in-out)
+		
+		&:hover
+			background #1e3654
+		
+.cont-mascara-menu
+	height 100%
+	position absolute
+	
+	&:after
+		content ''
+		clear both
+		display block
+	
+	.mascara-menu
+		height 100%
+		width 100%
+		margin-left -15px
+		background #252525
+
+
+/*-- Footer --*/
+
+.contenedor-footer
+	
+	footer
+		padding 40px
+		color rgba(255, 255, 255, 0.3)
+		font-size 12px
+		text-align center
+		background none
+					
 header
 	background black
 	
