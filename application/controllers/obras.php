@@ -28,7 +28,7 @@ class Obras extends CI_Controller {
 			#$this->load->view('navbarautor');
 			$this->load->view('dynno-front-master/create-activity',$data);
 			#$this->load->view('obras/create-activity',$data);
-			#$this->load->view('footer');
+			$this->load->view('footer');
 		}
 	}
 

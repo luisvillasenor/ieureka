@@ -155,17 +155,15 @@
 
 													<label for="">Categoría de la activdad</label>
 
-													<select name="" id="">
+													<select class="form-control input-lg" name="categoria" id="categoria" onchange="slctryole(this,this.form.subcategoria)">
+										                <option>- - Seleccionar - -</option> 
+										                <option value="ciencias_sociales">Ciencias Sociales</option> 
+										                <option value="ciencias_exactas">Ciencias exactas</option> 
+										            </select>
 
-														<option value="">Opción 1</option>
-
-														<option value="">Opción 2</option>
-
-														<option value="">Opción 3</option>
-
-														<option value="">Opción 4</option>
-
-													</select>
+										            <select class="form-control input-lg" name="subcategoria" id="subcategoria">
+										                <option>- - - - -</option> 
+										            </select>
 
 												</div>
 
