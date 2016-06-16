@@ -136,8 +136,10 @@
 
 									</div>
 
-									<?php $attributes = array('class' => '', 'id' => 'FormRegistroNuevaActividad');
+									<?php $attributes = array('class' => '', 'id' => 'FormRegistroNuevaActividad'); 
 									echo form_open("obras/create_quick",$attributes) ?>
+
+										<input type="hidden" name="id_user" value="<?php echo $this->session->userdata('id_user');?>">
 
 										<label for="titulo">Titulo de la actividad</label>
 
