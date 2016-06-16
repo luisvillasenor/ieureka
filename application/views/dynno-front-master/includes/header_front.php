@@ -3,6 +3,8 @@
 	<title>Homepage - Dynno.education</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900,700italic' rel='stylesheet' type='text/css'>
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/style.css">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">

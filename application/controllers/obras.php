@@ -5,7 +5,7 @@ class Obras extends CI_Controller {
 
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
 		$this->load->library('session');
-		$this->load->library('encrypt');
+		#$this->load->library('encrypt');
 		$this->load->model('obras_model');
 	}
 
@@ -24,10 +24,11 @@ class Obras extends CI_Controller {
 			$data['categorias'] = $this->categorias_model->get_all();
 			$data['subcategorias'] = $this->subcategorias_model->get_all();
 
-			$this->load->view('header');
-			$this->load->view('navbarautor');
-			$this->load->view('obras/nuevo',$data);
-			$this->load->view('footer');
+			#$this->load->view('header');
+			#$this->load->view('navbarautor');
+			$this->load->view('dynno-front-master/create-activity',$data);
+			#$this->load->view('obras/create-activity',$data);
+			#$this->load->view('footer');
 		}
 	}
 

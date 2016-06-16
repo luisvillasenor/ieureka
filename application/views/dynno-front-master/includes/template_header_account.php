@@ -15,8 +15,8 @@
 			<div class="col-xs-12 col-md-10">
 				<nav>
 					<ul>
-						<li><a href="#">Vista general</a></li>
-						<li><a href="#">Crear actividad</a></li>
+						<li><a href="<?php echo base_url('member/');?>">Vista general</a></li>
+						<li><a href="<?php echo base_url('obras/nuevo');?>">Crear actividad</a></li>
 						<li><a href="<?php echo base_url("obras/show/".$this->session->userdata('id_user')."");?>">Mis actividades</a></li>
 						<li><a href="<?php echo base_url('member/autor');?>">Editar perfil</a></li>
 						<li><a href="<?php echo base_url('admin/logout');?>">Cerrar sesión</a></li>

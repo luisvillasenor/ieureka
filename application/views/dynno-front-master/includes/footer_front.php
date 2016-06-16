@@ -1,4 +1,22 @@
-	<footer></footer>
+	<footer>
+		<div class="contenedor-footer">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-xs-12">
+
+				<footer>© 2015 Dynno.education | Todos los derechos reservados</footer>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+	</footer>
 
 </div>
 
@@ -11,6 +29,8 @@
 <script src="<?php echo base_url();?>assets/js/validator.js"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.animatecss.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/turbo.js"></script>
+
+<script src="<?php echo base_url();?>assets/js/menu-movil.js"></script>
 
 </body>
 </html>

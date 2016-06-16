@@ -21,6 +21,16 @@
     <![endif]-->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>bootstrap-3.3.4-dist/css/bootstrap.min.css">
   <!-- Custom CSS -->
+
+  <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<link href="https://file.myfontastic.com/xtqYhHuyApx6MR43y8HiHJ/icons.css" rel="stylesheet">
+
+
   <link href="<?php echo base_url();?>bootstrap-3.3.4-dist/css/simple-sidebar.css" rel="stylesheet">
   <script src="<?php echo base_url();?>bootstrap-3.3.4-dist/js/ie-emulation-modes-warning.js"></script>
   <link rel="stylesheet" href="<?php echo base_url();?>jquery-ui-1.11.4/jquery-ui.css">
